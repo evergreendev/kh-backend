@@ -29,16 +29,17 @@ export const SiteOptions: GlobalConfig = {
         },
         {
             name: "siteLogo",
-            label: "Site Logo",
+            label: "Site Logo Large",
             type: "upload",
             relationTo: "media",
             required: true
         },
         {
-            name: "siteLogoAlt",
-            label: "Site Logo Alt",
+            name: "siteLogoSmall",
+            label: "Site Logo Small",
             type: "upload",
             relationTo: "media",
+            required: true
         }
     ]
 }
