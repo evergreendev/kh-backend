@@ -2,6 +2,8 @@ import {GlobalConfig} from "payload/types";
 import navItemFields from "../../fields/navItemFields";
 import {NavRowLabel} from "./components/NavRowLabel";
 import {revalidateNavigation} from "../hooks/revalidateNavigation";
+import simpleMenuBlock from "../../blocks/navigation/SimpleMenuBlock";
+import NavigationBlock from "../../blocks/navigation/NavigationBlock";
 
 export const Navigation: GlobalConfig = {
     slug: "navigation",
@@ -29,70 +31,13 @@ export const Navigation: GlobalConfig = {
                 {
                     name: "sub_menu_1",
                     label: "Sub Menu",
-                    type: "array",
+                    type: "blocks",
                     labels: {
                         singular: "item",
                         plural: "items"
                     },
-                    admin: {
-                        components: {
-                            RowLabel: NavRowLabel
-                        }
-                    },
-                    fields: [
-                        ...navItemFields,
-                        {
-                            name: "sub_menu_2",
-                            label: "Sub Menu",
-                            type: "array",
-                            labels: {
-                                singular: "item",
-                                plural: "items"
-                            },
-                            admin: {
-                                components: {
-                                    RowLabel: NavRowLabel
-                                }
-                            },
-                            fields: [
-                                ...navItemFields,
-                                {
-                                    name: "sub_menu_3",
-                                    label: "Sub Menu",
-                                    type: "array",
-                                    labels: {
-                                        singular: "item",
-                                        plural: "items"
-                                    },
-                                    admin: {
-                                        components: {
-                                            RowLabel: NavRowLabel
-                                        }
-                                    },
-                                    fields: [
-                                        ...navItemFields,
-                                        {
-                                            name: "sub_menu_4",
-                                            label: "Sub Menu",
-                                            type: "array",
-                                            labels: {
-                                                singular: "item",
-                                                plural: "items"
-                                            },
-                                            admin: {
-                                                components: {
-                                                    RowLabel: NavRowLabel
-                                                }
-                                            },
-                                            fields: [
-                                                ...navItemFields,
-
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                    blocks: [
+                        NavigationBlock
                     ]
                 }
             ]
