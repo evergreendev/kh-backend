@@ -1,8 +1,7 @@
 import {GlobalConfig} from "payload/types";
 import navItemFields from "../../fields/navItemFields";
-import {NavRowLabel} from "./components/NavRowLabel";
+import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {revalidateNavigation} from "../hooks/revalidateNavigation";
-import simpleMenuBlock from "../../blocks/navigation/SimpleMenuBlock";
 import NavigationBlock from "../../blocks/navigation/NavigationBlock";
 
 export const Navigation: GlobalConfig = {
@@ -21,7 +20,7 @@ export const Navigation: GlobalConfig = {
             type: "array",
             admin: {
                 components: {
-                    RowLabel: NavRowLabel
+                    RowLabel: ArrayRowLabel
                 }
             },
 

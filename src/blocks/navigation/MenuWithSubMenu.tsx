@@ -1,5 +1,5 @@
 import {Block} from "payload/types";
-import {NavRowLabel} from "../../globals/Navigation/components/NavRowLabel";
+import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 
 const MenuWithSubMenuBlock: Block = {
     slug: 'MenuWithSubMenu', // required
@@ -9,7 +9,7 @@ const MenuWithSubMenuBlock: Block = {
             type: "array",
             admin: {
                 components: {
-                    RowLabel: NavRowLabel
+                    RowLabel: ArrayRowLabel
                 }
             },
             fields: [

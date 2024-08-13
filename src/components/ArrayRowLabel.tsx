@@ -1,6 +1,6 @@
 import { useField } from 'payload/components/forms'
 
-export const NavRowLabel = ({ data, index, path: arrayFieldPath }) => {
+export const ArrayRowLabel = ({ data, index, path: arrayFieldPath }) => {
     // arrayFieldPath example: "Navs.0"
     const path = `${arrayFieldPath}.title`
     const { value } = useField({ path })
