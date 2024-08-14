@@ -59,6 +59,76 @@ export const Pages: CollectionConfig = {
                 }
             ]
         },
+        {
+            name: 'parent_page',
+            label: "Parent Page",
+            type: "relationship",
+            relationTo: "pages",
+            filterOptions: ({id}) => {
+
+                return {
+                    id: {not_equals: id},
+                };
+            },
+            admin: {
+                position: "sidebar"
+            }
+        },
+        {
+            name: 'full_path',
+            label: "Full path",
+            type: "text",
+            admin: {
+                position: "sidebar"
+            },
+            access: {
+                update: () => false,
+                create: () => false,
+            },
+            hooks: {
+                afterRead: [
+                    async ({ data, req }) => {
+                        const { parent_page } = data
+
+                        if (!parent_page) return data.slug
+
+                        const pages = await req.payload.find({
+                            req,
+                            collection: "pages",
+                            where: {
+                                'id': {equals: parent_page}
+                            },
+                            limit: 0,
+                            depth: 0,
+                            pagination: false
+                        });
+
+                        let curr = pages.docs[0];
+                        let final = [];
+                        final.push(data.slug);
+                        final.push(curr.slug);
+
+                        while (curr.parent_page) {
+                            const pages = await req.payload.find({
+                                req,
+                                collection: "pages",
+                                where: {
+                                    'id': {equals: curr.parent_page}
+                                },
+                                limit: 0,
+                                depth: 0,
+                                pagination: false
+                            });
+                            curr = pages.docs[0];
+
+                            final.push(curr.slug);
+                        }
+
+                        return final.reverse().join("/");
+                    }
+                ]
+            }
+        },
         ...standardFields
     ]
 }
