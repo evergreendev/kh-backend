@@ -9,5 +9,5 @@ export const ArrayRowLabel = ({ data, index, path: arrayFieldPath }) => {
         return data.title;
     }
 
-    return `Nav ${index + 1}`;
+    return `Item ${index + 1}`;
 }

@@ -9,6 +9,7 @@ import {Navigation} from "./globals/Navigation/Navigation";
 import {SiteOptions} from "./globals/SiteOptions";
 import {Media} from "./collections/Media";
 import {Pages} from "./collections/Pages";
+import {Hours} from "./globals/Hours/Hours";
 
 export default buildConfig({
   admin: {
@@ -26,7 +27,7 @@ export default buildConfig({
   editor: slateEditor({}),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Users, Media, Pages],
-  globals: [Navigation, SiteOptions],
+  globals: [Navigation, SiteOptions, Hours],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
