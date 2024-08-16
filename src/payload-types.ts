@@ -87,6 +87,17 @@ export interface Media {
  */
 export interface Page {
   id: number;
+  intro_content?: {
+    video?: string | null;
+    images?:
+      | {
+          media?: number | Media | null;
+          id?: string | null;
+        }[]
+      | null;
+    header?: string | null;
+    content?: string | null;
+  };
   jump_menu?:
     | {
         title?: string | null;

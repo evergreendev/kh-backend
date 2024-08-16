@@ -15,7 +15,16 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
+  cors: [
+    process.env.PAYLOAD_PUBLIC_NEXT_URL,
+      process.env.PAYLOAD_PUBLIC_SERVER_URL
+  ],
+  csrf: [
+    process.env.PAYLOAD_PUBLIC_NEXT_URL,
+    process.env.PAYLOAD_PUBLIC_SERVER_URL
+  ],
   editor: slateEditor({}),
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Users, Media, Pages],
   globals: [Navigation, SiteOptions],
   typescript: {

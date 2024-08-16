@@ -10,7 +10,10 @@ export const Pages: CollectionConfig = {
     slug: "pages",
     admin: {
         useAsTitle: "title",
-        hidden: ({user}) => user.role !== "admin"
+        hidden: ({user}) => user.role !== "admin",
+        livePreview: {
+            url: ({data}) => `${process.env.PAYLOAD_PUBLIC_NEXT_URL}${data.slug !== 'home' ? `/${data.slug}`:""}?draft=true&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`,
+        },
     },
     hooks: {
         beforeChange: [populatePublishedAt],
@@ -26,6 +29,39 @@ export const Pages: CollectionConfig = {
         delete: isAdmin()
     },
     fields: [
+        {
+          name: "intro_content",
+          label: "Intro Content",
+            type: "group",
+            fields: [
+                {
+                    name: "video",
+                    type: "text",
+                    admin: {
+                        description: "URL to youtube video. If this is not empty slides will not show on front end"
+                    }
+                },
+                {
+                    name: "images",
+                    type: "array",
+                    fields: [
+                        {
+                            name: "media",
+                            type: "upload",
+                            relationTo: "media"
+                        }
+                    ]
+                },
+                {
+                    name: "header",
+                    type: "text"
+                },
+                {
+                    name: "content",
+                    type: "textarea"
+                }
+            ]
+        },
         {
             name: "jump_menu",
             label: "Jump Menu",
