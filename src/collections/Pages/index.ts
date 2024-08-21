@@ -5,6 +5,7 @@ import {populatePublishedAt} from "../../hooks/populatePublishedAt";
 import {revalidatePage} from "./hooks/revalidatePage";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
+import Column from "../../blocks/columns/column";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -164,6 +165,11 @@ export const Pages: CollectionConfig = {
                     }
                 ]
             }
+        },
+        {
+            name: "layout",
+            type: "blocks",
+            blocks: [Column]
         },
         ...standardFields
     ]

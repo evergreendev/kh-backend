@@ -5,6 +5,9 @@ const standardFields: Field[] = [{
     name: "title",
     type: "text",
     required: true,
+    admin: {
+        position: "sidebar"
+    }
 },
     slugField(),
     {
