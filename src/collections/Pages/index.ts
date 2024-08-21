@@ -6,6 +6,7 @@ import {revalidatePage} from "./hooks/revalidatePage";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import Column from "../../blocks/columns/column";
+import BreakerBlock from "../../blocks/BreakerBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -169,7 +170,7 @@ export const Pages: CollectionConfig = {
         {
             name: "layout",
             type: "blocks",
-            blocks: [Column]
+            blocks: [Column,BreakerBlock]
         },
         ...standardFields
     ]
