@@ -1,5 +1,6 @@
 import {Block} from "payload/types";
 import TextBlock from "../TextBlock";
+import MediaBlock from "../MediaBlock";
 
 export const Column: Block = {
     slug: "column",
@@ -20,7 +21,8 @@ export const Column: Block = {
                     name: "content",
                     type: "blocks",
                     blocks: [
-                        TextBlock
+                        TextBlock,
+                        MediaBlock
                     ]
                 },
                 {
