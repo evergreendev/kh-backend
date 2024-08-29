@@ -1,7 +1,7 @@
 import path from 'path'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {HTMLConverterFeature, lexicalEditor} from "@payloadcms/richtext-lexical";
 import { buildConfig } from 'payload/config'
 
 import Users from './collections/Users'
@@ -10,6 +10,7 @@ import {SiteOptions} from "./globals/SiteOptions";
 import {Media} from "./collections/Media";
 import {Pages} from "./collections/Pages";
 import {Hours} from "./globals/Hours/Hours";
+import {Footer} from "./globals/Footer";
 
 export default buildConfig({
   admin: {
@@ -24,10 +25,15 @@ export default buildConfig({
     process.env.PAYLOAD_PUBLIC_NEXT_URL,
     process.env.PAYLOAD_PUBLIC_SERVER_URL
   ],
-  editor: lexicalEditor({}),
+  editor: lexicalEditor({
+    features: ({defaultFeatures}) => [
+        ...defaultFeatures,
+        HTMLConverterFeature({}),
+    ]
+  }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Users, Media, Pages],
-  globals: [Navigation, SiteOptions, Hours],
+  globals: [Navigation, SiteOptions, Hours, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
