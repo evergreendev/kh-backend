@@ -105,6 +105,9 @@ export const Pages: CollectionConfig = {
             type: "relationship",
             relationTo: "pages",
             filterOptions: ({id}) => {
+                if(!id){
+                    return {};
+                }
 
                 return {
                     id: {not_equals: id},
