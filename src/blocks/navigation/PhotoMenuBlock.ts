@@ -4,6 +4,7 @@ import navItemFields from "../../fields/navItemFields";
 const PhotoMenuBlock:Block = {
     slug: "photoMenu",
     fields: [
+        ...navItemFields,
         {
             name: "item",
             type: "array",
