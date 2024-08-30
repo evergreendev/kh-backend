@@ -8,6 +8,7 @@ import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import Column from "../../blocks/columns/column";
 import BreakerBlock from "../../blocks/BreakerBlock";
 import MediaBlock from "../../blocks/MediaBlock";
+import TextBlock from "../../blocks/TextBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -171,7 +172,7 @@ export const Pages: CollectionConfig = {
         {
             name: "layout",
             type: "blocks",
-            blocks: [Column,BreakerBlock,MediaBlock]
+            blocks: [Column([MediaBlock, TextBlock]),BreakerBlock,MediaBlock]
         },
         ...standardFields
     ]

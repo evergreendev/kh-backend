@@ -122,6 +122,12 @@ export interface Page {
                   content?:
                     | (
                         | {
+                            media?: number | Media | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'MediaBlock';
+                          }
+                        | {
                             heading_1?: string | null;
                             heading_2?: string | null;
                             heading_link?: {
@@ -155,12 +161,6 @@ export interface Page {
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'TextBlock';
-                          }
-                        | {
-                            media?: number | Media | null;
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'MediaBlock';
                           }
                       )[]
                     | null;
@@ -262,96 +262,127 @@ export interface Navigation {
       value: number | Page;
     } | null;
     external_url?: string | null;
-    sub_menu_1?: Navigation_Block[] | null;
+    sub_menu_1?:
+      | {
+          width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4') | null;
+          title?: string | null;
+          external?: boolean | null;
+          Relation?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          external_url?: string | null;
+          content?:
+            | (
+                | {
+                    items?:
+                      | {
+                          title?: string | null;
+                          page?: {
+                            relationTo: 'pages';
+                            value: number | Page;
+                          } | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'SimpleMenu';
+                  }
+                | {
+                    item?:
+                      | {
+                          image?: number | Media | null;
+                          title?: string | null;
+                          external?: boolean | null;
+                          Relation?: {
+                            relationTo: 'pages';
+                            value: number | Page;
+                          } | null;
+                          external_url?: string | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'photoMenu';
+                  }
+                | {
+                    items?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'collectionCards';
+                  }
+                | {
+                    vertical_separator?: boolean | null;
+                    columns?:
+                      | {
+                          content?:
+                            | (
+                                | {
+                                    items?:
+                                      | {
+                                          title?: string | null;
+                                          page?: {
+                                            relationTo: 'pages';
+                                            value: number | Page;
+                                          } | null;
+                                          id?: string | null;
+                                        }[]
+                                      | null;
+                                    id?: string | null;
+                                    blockName?: string | null;
+                                    blockType: 'SimpleMenu';
+                                  }
+                                | {
+                                    item?:
+                                      | {
+                                          image?: number | Media | null;
+                                          title?: string | null;
+                                          external?: boolean | null;
+                                          Relation?: {
+                                            relationTo: 'pages';
+                                            value: number | Page;
+                                          } | null;
+                                          external_url?: string | null;
+                                          id?: string | null;
+                                        }[]
+                                      | null;
+                                    id?: string | null;
+                                    blockName?: string | null;
+                                    blockType: 'photoMenu';
+                                  }
+                                | {
+                                    items?: {
+                                      relationTo: 'pages';
+                                      value: number | Page;
+                                    } | null;
+                                    id?: string | null;
+                                    blockName?: string | null;
+                                    blockType: 'collectionCards';
+                                  }
+                              )[]
+                            | null;
+                          width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4') | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'column';
+                  }
+              )[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
     id?: string | null;
   }[];
   updatedAt?: string | null;
   createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Navigation_Block".
- */
-export interface Navigation_Block {
-  content?:
-    | (
-        | {
-            items?:
-              | {
-                  title?: string | null;
-                  page?: {
-                    relationTo: 'pages';
-                    value: number | Page;
-                  } | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'SimpleMenu';
-          }
-        | {
-            layout?: ('oneColumn' | 'twoColumns' | 'twoThirdsOneThird' | 'halfAndHalf' | 'threeColumns') | null;
-            columnOne?:
-              | {
-                  items?:
-                    | {
-                        title?: string | null;
-                        page?: {
-                          relationTo: 'pages';
-                          value: number | Page;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'SimpleMenu';
-                }[]
-              | null;
-            columnTwo?:
-              | {
-                  items?:
-                    | {
-                        title?: string | null;
-                        page?: {
-                          relationTo: 'pages';
-                          value: number | Page;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'SimpleMenu';
-                }[]
-              | null;
-            columnThree?:
-              | {
-                  items?:
-                    | {
-                        title?: string | null;
-                        page?: {
-                          relationTo: 'pages';
-                          value: number | Page;
-                        } | null;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                  blockName?: string | null;
-                  blockType: 'SimpleMenu';
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'columns-block';
-          }
-      )[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'NavigationBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
