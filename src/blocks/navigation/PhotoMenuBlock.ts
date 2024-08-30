@@ -1,5 +1,6 @@
 import {Block} from "payload/types";
 import navItemFields from "../../fields/navItemFields";
+import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 
 const PhotoMenuBlock:Block = {
     slug: "photoMenu",
@@ -8,6 +9,11 @@ const PhotoMenuBlock:Block = {
         {
             name: "item",
             type: "array",
+            admin: {
+              components:{
+                  RowLabel: ArrayRowLabel
+              }
+            },
             fields: [
                 {
                     name: "image",

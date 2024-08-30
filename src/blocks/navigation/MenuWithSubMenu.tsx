@@ -18,17 +18,7 @@ const MenuWithSubMenuBlock: Block = {
                     RowLabel: ArrayRowLabel
                 }
             },
-            fields: [
-                {
-                    name: "title",
-                    type: "text",
-                },
-                {
-                    name: "page",
-                    type: "relationship",
-                    relationTo: ["pages"],
-                }
-            ]
+            fields: navItemFields
         }
     ],
 }

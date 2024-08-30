@@ -7,11 +7,16 @@ import PhotoMenuBlock from "../../blocks/navigation/PhotoMenuBlock";
 import MenuWithSubMenuBlock from "../../blocks/navigation/MenuWithSubMenu";
 import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
 import collectionCardBlock from "../../blocks/CollectionCardBlock";
+import {isAdmin} from "../../access/isAdmin";
 
 export const Navigation: GlobalConfig = {
     slug: "navigation",
     admin: {
         hidden: ({user}) => user.role !== "admin"
+    },
+    access: {
+        read: () => true,
+        update: isAdmin(),
     },
     hooks: {
         afterChange: [
