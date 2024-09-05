@@ -262,34 +262,55 @@ export interface Navigation {
       value: number | Page;
     } | null;
     external_url?: string | null;
-    sub_menu_1?:
+    columns?:
       | {
-          width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4') | null;
-          title?: string | null;
-          external?: boolean | null;
-          Relation?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          external_url?: string | null;
           content?:
             | (
                 | {
+                    item?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    text?: string | null;
+                    buttonStyle?: ('primary' | 'secondary' | 'tertiary' | 'highlight' | 'text') | null;
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'MenuButton';
+                  }
+                | {
+                    headerItem?: {
+                      title?: string | null;
+                      external?: boolean | null;
+                      Relation?: {
+                        relationTo: 'pages';
+                        value: number | Page;
+                      } | null;
+                      external_url?: string | null;
+                    };
                     items?:
                       | {
                           title?: string | null;
-                          page?: {
+                          external?: boolean | null;
+                          Relation?: {
                             relationTo: 'pages';
                             value: number | Page;
                           } | null;
+                          external_url?: string | null;
                           id?: string | null;
                         }[]
                       | null;
                     id?: string | null;
                     blockName?: string | null;
-                    blockType: 'SimpleMenu';
+                    blockType: 'MenuWithSubMenu';
                   }
                 | {
+                    title?: string | null;
+                    external?: boolean | null;
+                    Relation?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    external_url?: string | null;
                     item?:
                       | {
                           image?: number | Media | null;
@@ -308,74 +329,15 @@ export interface Navigation {
                     blockType: 'photoMenu';
                   }
                 | {
-                    items?: {
-                      relationTo: 'pages';
-                      value: number | Page;
-                    } | null;
+                    numberOfItemsToShow?: number | null;
+                    collectionsToPull?: ('pages' | 'events' | 'collections') | null;
                     id?: string | null;
                     blockName?: string | null;
                     blockType: 'collectionCards';
                   }
-                | {
-                    vertical_separator?: boolean | null;
-                    columns?:
-                      | {
-                          content?:
-                            | (
-                                | {
-                                    items?:
-                                      | {
-                                          title?: string | null;
-                                          page?: {
-                                            relationTo: 'pages';
-                                            value: number | Page;
-                                          } | null;
-                                          id?: string | null;
-                                        }[]
-                                      | null;
-                                    id?: string | null;
-                                    blockName?: string | null;
-                                    blockType: 'SimpleMenu';
-                                  }
-                                | {
-                                    item?:
-                                      | {
-                                          image?: number | Media | null;
-                                          title?: string | null;
-                                          external?: boolean | null;
-                                          Relation?: {
-                                            relationTo: 'pages';
-                                            value: number | Page;
-                                          } | null;
-                                          external_url?: string | null;
-                                          id?: string | null;
-                                        }[]
-                                      | null;
-                                    id?: string | null;
-                                    blockName?: string | null;
-                                    blockType: 'photoMenu';
-                                  }
-                                | {
-                                    items?: {
-                                      relationTo: 'pages';
-                                      value: number | Page;
-                                    } | null;
-                                    id?: string | null;
-                                    blockName?: string | null;
-                                    blockType: 'collectionCards';
-                                  }
-                              )[]
-                            | null;
-                          width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4') | null;
-                          id?: string | null;
-                        }[]
-                      | null;
-                    id?: string | null;
-                    blockName?: string | null;
-                    blockType: 'column';
-                  }
               )[]
             | null;
+          width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4') | null;
           id?: string | null;
         }[]
       | null;

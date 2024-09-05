@@ -7,6 +7,15 @@ const MenuButtonBlock:Block = {
             name: "item",
             type: "relationship",
             relationTo: ["pages"]
+        },
+        {
+            name: "text",
+            type: "text"
+        },
+        {
+            name: "buttonStyle",
+            type: "select",
+            options: ["primary","secondary","tertiary","highlight","text"]
         }
     ]
 }
