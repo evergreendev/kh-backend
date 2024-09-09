@@ -7,6 +7,11 @@ export const MediaBlock: Block = {
             name: "media",
             type: "upload",
             relationTo: "media"
+        },
+        {
+            name: "thumbnail",
+            type: "upload",
+            relationTo: "media"
         }
     ]
 }

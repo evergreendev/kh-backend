@@ -46,6 +46,11 @@ export const Pages: CollectionConfig = {
                     }
                 },
                 {
+                    name: "thumbnail",
+                    type: "upload",
+                    relationTo: "media"
+                },
+                {
                     name: "images",
                     type: "array",
                     fields: [
