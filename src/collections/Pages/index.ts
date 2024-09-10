@@ -180,6 +180,10 @@ export const Pages: CollectionConfig = {
         {
             name: "layout",
             type: "blocks",
+            labels: {
+                singular: "row",
+                plural: "rows",
+            },
             blocks: [Column([MediaBlock, TextBlock]),BreakerBlock,MediaBlock]
         },
         ...standardFields

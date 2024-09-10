@@ -39,10 +39,6 @@ export const Breaker: Block = {
             type: "group",
             fields: [
                 {
-                    name: "text",
-                    type: "text"
-                },
-                {
                     name: "type",
                     type: "select",
                     options: [
@@ -57,6 +53,10 @@ export const Breaker: Block = {
                         {
                             value: "highlight",
                             label: "Highlight"
+                        },
+                        {
+                            value: "tertiary",
+                            label: "Tertiary"
                         }
                     ]
                 },
