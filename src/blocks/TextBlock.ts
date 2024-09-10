@@ -1,4 +1,5 @@
 import {Block} from "payload/types";
+import navItemFields from "../fields/navItemFields";
 
 export const TextBlock: Block = {
     slug: "TextBlock",
@@ -18,14 +19,11 @@ export const TextBlock: Block = {
             label: "Heading Link",
             type: "group",
             fields: [
-                {
-                    name: "link",
-                    type: "text"
-                },
+                ...navItemFields,
                 {
                     name: "label",
                     type: "text"
-                }
+                },
             ]
         },
         {
@@ -41,13 +39,13 @@ export const TextBlock: Block = {
                     label: "Link List",
                     type: "array",
                     fields: [
-                        {
-                            name: "link",
-                            type: "text"
-                        },
+                        ...navItemFields,
                         {
                             name: "label",
-                            type: "text"
+                            type: "text",
+                            admin: {
+                                description: "Text to link to the page. Leave blank to just use the Title"
+                            }
                         }
                     ]
                 }

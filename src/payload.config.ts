@@ -1,8 +1,8 @@
 import path from 'path'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { webpackBundler } from '@payloadcms/bundler-webpack'
-import {HTMLConverterFeature, lexicalEditor} from "@payloadcms/richtext-lexical";
-import { buildConfig } from 'payload/config'
+import {postgresAdapter} from '@payloadcms/db-postgres'
+import {webpackBundler} from '@payloadcms/bundler-webpack'
+import {HTMLConverterFeature, lexicalEditor, LinkFeature, RelationshipFeature} from "@payloadcms/richtext-lexical";
+import {buildConfig} from 'payload/config'
 
 import Users from './collections/Users'
 import {Navigation} from "./globals/Navigation/Navigation";
@@ -13,37 +13,47 @@ import {Hours} from "./globals/Hours/Hours";
 import {Footer} from "./globals/Footer";
 
 export default buildConfig({
-  admin: {
-    user: Users.slug,
-    bundler: webpackBundler(),
-  },
-  cors: [
-    process.env.PAYLOAD_PUBLIC_NEXT_URL,
-      process.env.PAYLOAD_PUBLIC_SERVER_URL
-  ],
-  csrf: [
-    process.env.PAYLOAD_PUBLIC_NEXT_URL,
-    process.env.PAYLOAD_PUBLIC_SERVER_URL
-  ],
-  editor: lexicalEditor({
-    features: ({defaultFeatures}) => [
-        ...defaultFeatures,
-        HTMLConverterFeature({}),
-    ]
-  }),
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Users, Media, Pages],
-  globals: [Navigation, SiteOptions, Hours, Footer],
-  typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts'),
-  },
-  graphQL: {
-    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
-  },
-  plugins: [],
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI,
+    admin: {
+        user: Users.slug,
+        bundler: webpackBundler(),
     },
-  }),
+    cors: [
+        process.env.PAYLOAD_PUBLIC_NEXT_URL,
+        process.env.PAYLOAD_PUBLIC_SERVER_URL
+    ],
+    csrf: [
+        process.env.PAYLOAD_PUBLIC_NEXT_URL,
+        process.env.PAYLOAD_PUBLIC_SERVER_URL
+    ],
+    editor: lexicalEditor({
+        features: ({defaultFeatures}) => {
+            return [
+                ...defaultFeatures.filter(feature => {
+                    return feature.key !== 'upload' && feature.key !== 'checkList'
+                }),
+                LinkFeature({
+                    enabledCollections: ["pages"]
+                }),
+                RelationshipFeature({
+                    enabledCollections: ["pages"]
+                }),
+                HTMLConverterFeature({}),
+            ]
+        }
+    }),
+    serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+    collections: [Users, Media, Pages],
+    globals: [Navigation, SiteOptions, Hours, Footer],
+    typescript: {
+        outputFile: path.resolve(__dirname, 'payload-types.ts'),
+    },
+    graphQL: {
+        schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
+    },
+    plugins: [],
+    db: postgresAdapter({
+        pool: {
+            connectionString: process.env.DATABASE_URI,
+        },
+    }),
 })

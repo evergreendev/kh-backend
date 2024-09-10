@@ -10,6 +10,9 @@ export const MediaBlock: Block = {
         },
         {
             name: "thumbnail",
+            admin: {
+                description: "Thumbnail to show for videos. This field won't be used if Media is not a video"
+            },
             type: "upload",
             relationTo: "media"
         }

@@ -35,7 +35,11 @@ export const Media: CollectionConfig = {
                 position: 'centre',
             },
         ],
-        adminThumbnail: 'thumbnail',
+        adminThumbnail: ({doc}) => {
+            if ((doc.mimeType as string).includes('image')) return (doc as any).sizes.thumbnail.url;
+
+            return null;
+        },
         mimeTypes: ["image/*","video/mp4"],
     },
     fields: [
