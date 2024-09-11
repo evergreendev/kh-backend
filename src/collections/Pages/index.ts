@@ -42,7 +42,7 @@ export const Pages: CollectionConfig = {
                     name: "video",
                     type: "text",
                     admin: {
-                        description: "URL to youtube video. If this is not empty slides will not show on front end"
+                        description: "URL to youtube video. If this is empty slides will show on front end instead of the video"
                     }
                 },
                 {

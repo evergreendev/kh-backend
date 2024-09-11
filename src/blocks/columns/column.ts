@@ -14,6 +14,27 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
                 }
             },
             {
+                type: "checkbox",
+                name: "fullWidth"
+            },
+            {
+                type: "checkbox",
+                name: "narrowRow",
+                admin: {
+                    condition: (data, siblingData, { user, }) => {
+                        return !siblingData.fullWidth
+                    },
+                    description: "Make this group of columns narrow"
+                }
+            },
+            {
+                type: "checkbox",
+                name: "grayBackground",
+                admin: {
+                    description: "Make this group of columns have a gray background"
+                }
+            },
+            {
                 name: "columns",
                 type: "array",
                 fields: [

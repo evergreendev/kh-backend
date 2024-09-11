@@ -118,6 +118,9 @@ export interface Page {
     | (
         | {
             vertical_separator?: boolean | null;
+            fullWidth?: boolean | null;
+            narrowRow?: boolean | null;
+            grayBackground?: boolean | null;
             columns?:
               | {
                   content?:
