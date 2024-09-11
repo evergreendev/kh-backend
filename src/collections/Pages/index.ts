@@ -9,6 +9,7 @@ import Column from "../../blocks/columns/column";
 import BreakerBlock from "../../blocks/BreakerBlock";
 import MediaBlock from "../../blocks/MediaBlock";
 import TextBlock from "../../blocks/TextBlock";
+import HeaderBlock from "../../blocks/HeaderBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -184,7 +185,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock]),BreakerBlock,MediaBlock]
+            blocks: [Column([MediaBlock, TextBlock]),BreakerBlock,MediaBlock,HeaderBlock]
         },
         ...standardFields
     ]
