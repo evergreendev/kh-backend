@@ -1,21 +1,18 @@
 import {Block} from "payload/types";
+import navItemFields from "../../fields/navItemFields";
 
 const MenuButtonBlock:Block = {
     slug: "MenuButton",
     fields: [
-        {
-            name: "item",
-            type: "relationship",
-            relationTo: ["pages"]
-        },
-        {
-            name: "text",
-            type: "text"
-        },
+        ...navItemFields,
         {
             name: "buttonStyle",
             type: "select",
             options: ["primary","secondary","tertiary","highlight","text"]
+        },
+        {
+            name: "hasIcon",
+            type: "checkbox",
         }
     ]
 }

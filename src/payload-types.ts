@@ -179,6 +179,20 @@ export interface Page {
                             blockName?: string | null;
                             blockType: 'TextBlock';
                           }
+                        | {
+                            title?: string | null;
+                            external?: boolean | null;
+                            Relation?: {
+                              relationTo: 'pages';
+                              value: number | Page;
+                            } | null;
+                            external_url?: string | null;
+                            buttonStyle?: ('primary' | 'secondary' | 'tertiary' | 'highlight' | 'text') | null;
+                            hasIcon?: boolean | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'MenuButton';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4') | null;
@@ -240,6 +254,20 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'HeaderBlock';
+          }
+        | {
+            title?: string | null;
+            external?: boolean | null;
+            Relation?: {
+              relationTo: 'pages';
+              value: number | Page;
+            } | null;
+            external_url?: string | null;
+            buttonStyle?: ('primary' | 'secondary' | 'tertiary' | 'highlight' | 'text') | null;
+            hasIcon?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'MenuButton';
           }
       )[]
     | null;
@@ -304,12 +332,15 @@ export interface Navigation {
           content?:
             | (
                 | {
-                    item?: {
+                    title?: string | null;
+                    external?: boolean | null;
+                    Relation?: {
                       relationTo: 'pages';
                       value: number | Page;
                     } | null;
-                    text?: string | null;
+                    external_url?: string | null;
                     buttonStyle?: ('primary' | 'secondary' | 'tertiary' | 'highlight' | 'text') | null;
+                    hasIcon?: boolean | null;
                     id?: string | null;
                     blockName?: string | null;
                     blockType: 'MenuButton';
