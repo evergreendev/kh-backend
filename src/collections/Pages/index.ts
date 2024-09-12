@@ -186,7 +186,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock]),BreakerBlock,MediaBlock,HeaderBlock,MenuButtonBlock]
+            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock]),BreakerBlock,MediaBlock,HeaderBlock,MenuButtonBlock]
         },
         ...standardFields
     ]

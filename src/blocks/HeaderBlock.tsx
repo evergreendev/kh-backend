@@ -7,6 +7,14 @@ export const HeaderBlock: Block = {
             name: "text",
             type: "richText"
         },
+        {
+            name: "underlineHighlight",
+            type: "checkbox",
+        },
+        {
+            name: "largeText",
+            type: "checkbox"
+        }
     ]
 }
 

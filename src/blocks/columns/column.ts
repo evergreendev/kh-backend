@@ -15,7 +15,10 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
             },
             {
                 type: "checkbox",
-                name: "fullWidth"
+                name: "fullWidth",
+                admin: {
+                    description: "Makes row go to the edge of the screen"
+                }
             },
             {
                 type: "checkbox",

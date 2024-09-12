@@ -23,7 +23,8 @@ const widthField:Field = {
         {
             label: "3/4",
             value: "3/4",
-        }
+        },
+        "1/1"
     ]
 }
 
