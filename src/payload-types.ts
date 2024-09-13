@@ -128,6 +128,7 @@ export interface Page {
                         | {
                             media?: number | Media | null;
                             thumbnail?: number | Media | null;
+                            expandImage?: boolean | null;
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'MediaBlock';
@@ -218,6 +219,13 @@ export interface Page {
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
+                  title?: string | null;
+                  external?: boolean | null;
+                  Relation?: {
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null;
+                  external_url?: string | null;
                   id?: string | null;
                 }[]
               | null;
@@ -253,6 +261,7 @@ export interface Page {
         | {
             media?: number | Media | null;
             thumbnail?: number | Media | null;
+            expandImage?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'MediaBlock';

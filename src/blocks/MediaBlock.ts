@@ -15,6 +15,13 @@ export const MediaBlock: Block = {
             },
             type: "upload",
             relationTo: "media"
+        },
+        {
+            name: "expandImage",
+            type: "checkbox",
+            admin: {
+                description: "Forces image to expand to fill the size of the container"
+            }
         }
     ]
 }
