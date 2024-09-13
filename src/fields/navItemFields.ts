@@ -2,6 +2,7 @@ import {Field} from "payload/types";
 
 const navItemFields: Field[] = [{
     name: "title",
+    label: "Link Title (optional)",
     type: "text",
 },
     {

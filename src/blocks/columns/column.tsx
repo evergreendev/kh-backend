@@ -1,5 +1,7 @@
 import {Block} from "payload/types";
 import widthField from "../../fields/widthField";
+import navItemFields from "../../fields/navItemFields";
+import React from "react";
 
 const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
     return {
@@ -46,7 +48,20 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
                         type: "blocks",
                         blocks: contentBlocks
                     },
-                    widthField
+                    widthField,
+                    {
+                        name: "linkLabel",
+                        type: "ui",
+                        admin: {
+                            components: {
+                                Field: ()=> {
+                                    return <h3>Add Link to Column (optional)</h3>
+                                }
+                            }
+                        }
+                    },
+                    ...navItemFields,
+
                 ]
             },
 
