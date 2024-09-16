@@ -34,6 +34,13 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
             },
             {
                 type: "checkbox",
+                name: "wideSpacing",
+                admin: {
+                    description: "Adds more spacing between rows"
+                }
+            },
+            {
+                type: "checkbox",
                 name: "grayBackground",
                 admin: {
                     description: "Make this group of columns have a gray background"
