@@ -3,6 +3,7 @@ import {postgresAdapter} from '@payloadcms/db-postgres'
 import {webpackBundler} from '@payloadcms/bundler-webpack'
 import {HTMLConverterFeature, lexicalEditor, LinkFeature, RelationshipFeature} from "@payloadcms/richtext-lexical";
 import {buildConfig} from 'payload/config'
+import search from '@payloadcms/plugin-search'
 
 import Users from './collections/Users'
 import {Navigation} from "./globals/Navigation/Navigation";
@@ -11,6 +12,8 @@ import {Media} from "./collections/Media";
 import {Pages} from "./collections/Pages";
 import {Hours} from "./globals/Hours/Hours";
 import {Footer} from "./globals/Footer";
+import {revalidate} from "./utilities/revalidate";
+import payload from "payload";
 
 export default buildConfig({
     admin: {
@@ -50,7 +53,20 @@ export default buildConfig({
     graphQL: {
         schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
     },
-    plugins: [],
+    plugins: [
+        search({
+            collections: ['pages'],
+            defaultPriorities: {
+                pages: 10
+            },
+            beforeSync: ({ originalDoc, searchDoc }) => {
+
+                revalidate({payload, collection: 'search', slug: ""})
+
+                return searchDoc;
+            }
+        })
+    ],
     db: postgresAdapter({
         pool: {
             connectionString: process.env.DATABASE_URI,
