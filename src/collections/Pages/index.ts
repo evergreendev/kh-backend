@@ -12,6 +12,7 @@ import TextBlock from "../../blocks/TextBlock";
 import HeaderBlock from "../../blocks/HeaderBlock";
 import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
 import CompareSliderBlock from "../../blocks/CompareSliderBlock";
+import FormBlock from "../../blocks/FormBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -187,7 +188,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock]),BreakerBlock,MediaBlock,HeaderBlock,MenuButtonBlock,CompareSliderBlock]
+            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock]),BreakerBlock,MediaBlock,HeaderBlock,MenuButtonBlock,CompareSliderBlock,FormBlock]
         },
         ...standardFields
     ]
