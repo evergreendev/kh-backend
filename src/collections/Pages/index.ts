@@ -41,6 +41,7 @@ export const Pages: CollectionConfig = {
           name: "intro_content",
           label: "Intro Content",
             type: "group",
+            admin:{disableListColumn:true},
             fields: [
                 {
                     name: "video",
