@@ -11,6 +11,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    userUploadedFormDocuments: UserUploadedFormDocument;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
@@ -33,6 +34,9 @@ export interface User {
   role?: 'admin' | null;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -455,6 +459,17 @@ export interface Form {
             blockName?: string | null;
             blockType: 'textarea';
           }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            maxSize?: number | null;
+            fileTypes?: ('Images' | 'Video' | 'PDF' | 'WordDocs')[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'FileUpload';
+          }
       )[]
     | null;
   submitButtonLabel?: string | null;
@@ -505,6 +520,50 @@ export interface Form {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "userUploadedFormDocuments".
+ */
+export interface UserUploadedFormDocument {
+  id: number;
+  associatedFormSubmission?: (number | null) | FormSubmission;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
