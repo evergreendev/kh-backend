@@ -128,6 +128,13 @@ export const Pages: CollectionConfig = {
             }
         },
         {
+            name: "excerpt",
+            type: "textarea",
+            admin: {
+                position: "sidebar"
+            }
+        },
+        {
             name: 'full_path',
             label: "Full path",
             type: "text",

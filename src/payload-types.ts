@@ -34,9 +34,6 @@ export interface User {
   role?: 'admin' | null;
   updatedAt: string;
   createdAt: string;
-  enableAPIKey?: boolean | null;
-  apiKey?: string | null;
-  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -120,6 +117,7 @@ export interface Page {
       }[]
     | null;
   parent_page?: (number | null) | Page;
+  excerpt?: string | null;
   full_path?: string | null;
   layout?:
     | (
@@ -342,6 +340,11 @@ export interface Page {
   slug?: string | null;
   publishedAt?: string | null;
   featuredImage?: number | Media | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: number | Media | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

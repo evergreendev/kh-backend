@@ -5,6 +5,7 @@ import {HTMLConverterFeature, lexicalEditor, LinkFeature, RelationshipFeature} f
 import {buildConfig} from 'payload/config'
 import search from '@payloadcms/plugin-search'
 import formBuilder, {fields} from '@payloadcms/plugin-form-builder'
+import seoPlugin from '@payloadcms/plugin-seo'
 
 import Users from './collections/Users'
 import {Navigation} from "./globals/Navigation/Navigation";
@@ -19,6 +20,7 @@ import {revalidateForm} from "./collections/Forms/hooks/revalidateForm";
 import FileUploadBlock from "./blocks/FileUploadBlock";
 import {UserUploadedFormDocuments} from "./collections/UserUploadedFormDocuments";
 
+// @ts-ignore
 export default buildConfig({
     admin: {
         user: Users.slug,
@@ -65,6 +67,23 @@ export default buildConfig({
     }
     ,
     plugins: [
+        seoPlugin({
+            collections: [
+                'pages'
+            ],
+            uploadsCollection: 'media',
+            generateTitle: ({doc}) => {
+                // @ts-ignore
+                if (doc.title.value === "home"){
+                    return 'Crazy Horse Memorial®'
+                }else {
+                    // @ts-ignore
+                    return `Crazy Horse Memorial® - ${doc.title.value}`
+                }
+            },
+            // @ts-ignore
+            generateDescription: ({doc}) => doc.excerpt.value
+        }),
         formBuilder({
             fields: {
                 payment: false,
