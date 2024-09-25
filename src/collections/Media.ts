@@ -40,7 +40,7 @@ export const Media: CollectionConfig = {
 
             return null;
         },
-        mimeTypes: ["image/*","video/mp4"],
+        mimeTypes: ["image/*","video/mp4","application/pdf"],
     },
     fields: [
         {

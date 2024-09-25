@@ -17,14 +17,6 @@ const standardFields: Field[] = [{
             position: 'sidebar',
         },
     },
-    {
-        name: 'featuredImage',
-        label: 'Featured Image',
-        type: 'upload',
-        relationTo: "media",
-        admin: {
-            position: 'sidebar',
-        }
-    }]
+]
 
 export default standardFields;

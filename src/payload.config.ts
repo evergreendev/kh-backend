@@ -19,6 +19,7 @@ import payload from "payload";
 import {revalidateForm} from "./collections/Forms/hooks/revalidateForm";
 import FileUploadBlock from "./blocks/FileUploadBlock";
 import {UserUploadedFormDocuments} from "./collections/UserUploadedFormDocuments";
+import {Employment} from "./collections/Employment";
 
 // @ts-ignore
 export default buildConfig({
@@ -54,7 +55,7 @@ export default buildConfig({
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages,UserUploadedFormDocuments],
+        [Users, Media, Pages,UserUploadedFormDocuments,Employment],
     globals:
         [Navigation, SiteOptions, Hours, Footer],
     typescript:

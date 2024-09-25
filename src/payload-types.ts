@@ -12,6 +12,7 @@ export interface Config {
     media: Media;
     pages: Page;
     userUploadedFormDocuments: UserUploadedFormDocument;
+    employment: Employment;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
@@ -235,6 +236,13 @@ export interface Page {
                             blockName?: string | null;
                             blockType: 'FormBlock';
                           }
+                        | {
+                            company: 'crazy-horse' | 'korczak';
+                            positionType: 'year-round' | 'seasonal';
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'EmploymentBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -334,12 +342,18 @@ export interface Page {
             blockName?: string | null;
             blockType: 'FormBlock';
           }
+        | {
+            company: 'crazy-horse' | 'korczak';
+            positionType: 'year-round' | 'seasonal';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'EmploymentBlock';
+          }
       )[]
     | null;
   title: string;
   slug?: string | null;
   publishedAt?: string | null;
-  featuredImage?: number | Media | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -584,6 +598,25 @@ export interface FormSubmission {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "employment".
+ */
+export interface Employment {
+  id: number;
+  description?: string | null;
+  linksToOnlineEmploymentForm?: boolean | null;
+  PDF?: number | Media | null;
+  company: 'crazy-horse' | 'korczak';
+  positionType: 'year-round' | 'seasonal';
+  featuredImage?: number | Media | null;
+  title: string;
+  slug?: string | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
