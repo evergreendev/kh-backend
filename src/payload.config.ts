@@ -4,7 +4,7 @@ import {webpackBundler} from '@payloadcms/bundler-webpack'
 import {HTMLConverterFeature, lexicalEditor, LinkFeature, RelationshipFeature} from "@payloadcms/richtext-lexical";
 import {buildConfig} from 'payload/config'
 import search from '@payloadcms/plugin-search'
-import formBuilder, {fields} from '@payloadcms/plugin-form-builder'
+import formBuilder from '@payloadcms/plugin-form-builder'
 import seoPlugin from '@payloadcms/plugin-seo'
 
 import Users from './collections/Users'
@@ -20,6 +20,7 @@ import {revalidateForm} from "./collections/Forms/hooks/revalidateForm";
 import FileUploadBlock from "./blocks/FileUploadBlock";
 import {UserUploadedFormDocuments} from "./collections/UserUploadedFormDocuments";
 import {Employment} from "./collections/Employment";
+import {MuseumCollections} from "./collections/MuseumCollections";
 
 // @ts-ignore
 export default buildConfig({
@@ -55,7 +56,7 @@ export default buildConfig({
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages,UserUploadedFormDocuments,Employment],
+        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections],
     globals:
         [Navigation, SiteOptions, Hours, Footer],
     typescript:

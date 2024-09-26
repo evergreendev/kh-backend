@@ -6,6 +6,10 @@ import React from "react";
 const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
     return {
         slug: "column",
+        labels: {
+            singular: "Columns",
+            plural: "Columns"
+        },
         fields: [
             {
                 type: "checkbox",

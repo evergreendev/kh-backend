@@ -3,6 +3,10 @@ import navItemFields from "../fields/navItemFields";
 
 export const TextBlock: Block = {
     slug: "TextBlock",
+    labels: {
+        plural: "Text with Headers",
+        singular: "Text with Headers",
+    },
     fields: [
         {
             name: "heading_1",
