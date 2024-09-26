@@ -10,8 +10,17 @@ const CollectionCardBlock:Block = {
             defaultValue: 3
         },
         {
+            name: "type",
+            type: "select",
+            options: [
+                "slider",
+                "blocks"
+            ]
+        },
+        {
             name: "collectionsToPull",
             type: "select",
+            hasMany: true,
             options: [
                 "pages",
                 "events",
