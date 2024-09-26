@@ -63,8 +63,7 @@ export const MuseumCollections: CollectionConfig = {
                     relationTo: "media",
                     admin: {
                         condition: (data) => {
-                            console.log(data);
-                            return data.intro_content.video || data.intro_content.videoFile;
+                            return data?.intro_content?.video || data?.intro_content?.videoFile;
                         },
                         description: "Image used as video cover"
                     }
