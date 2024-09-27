@@ -21,6 +21,9 @@ import FileUploadBlock from "./blocks/FileUploadBlock";
 import {UserUploadedFormDocuments} from "./collections/UserUploadedFormDocuments";
 import {Employment} from "./collections/Employment";
 import {MuseumCollections} from "./collections/MuseumCollections";
+import {ContinuingToImpact} from "./collections/ContinuingToImpact";
+import {StudentSpotlight} from "./collections/StudentSpotlight";
+import {PassionsForTheProject} from "./collections/PassionsForTheProject";
 
 // @ts-ignore
 export default buildConfig({
@@ -56,7 +59,7 @@ export default buildConfig({
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections],
+        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject],
     globals:
         [Navigation, SiteOptions, Hours, Footer],
     typescript:

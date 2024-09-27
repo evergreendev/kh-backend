@@ -2,7 +2,7 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidatePage} from "./hooks/revalidatePage";
+import {revalidateContinuingToImpact} from "./hooks/revalidateContinuingToImpact";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import Column from "../../blocks/columns/column";
@@ -12,24 +12,24 @@ import TextBlock from "../../blocks/TextBlock";
 import HeaderBlock from "../../blocks/HeaderBlock";
 import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
 import CompareSliderBlock from "../../blocks/CompareSliderBlock";
-import FormBlock from "../../blocks/FormBlock";
-import EmploymentBlock from "../../blocks/EmploymentBlock";
-import CollectionCardBlock from "../../blocks/CollectionCardBlock";
-import collectionCardBlock from "../../blocks/CollectionCardBlock";
-import singleCollectionBlock from "../../blocks/SingleCollectionBlock";
+import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
 
-export const Pages: CollectionConfig = {
-    slug: "pages",
+export const ContinuingToImpact: CollectionConfig = {
+    slug: "impact",
+    labels: {
+        singular: "Continuing to Impact",
+        plural: "Continuing to Impact"
+    },
     admin: {
         useAsTitle: "title",
         hidden: ({user}) => user.role !== "admin",
         livePreview: {
-            url: ({data}) => `${process.env.PAYLOAD_PUBLIC_NEXT_URL}${data.slug !== 'home' ? `/${data.slug}`:""}?draft=true&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`,
+            url: ({data}) => `${process.env.PAYLOAD_PUBLIC_NEXT_URL}/museum-collection/${data.slug}?draft=true&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`,
         },
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidatePage]
+        afterChange: [revalidateContinuingToImpact]
     },
     versions: {
         drafts: true
@@ -42,8 +42,8 @@ export const Pages: CollectionConfig = {
     },
     fields: [
         {
-          name: "intro_content",
-          label: "Intro Content",
+            name: "intro_content",
+            label: "Intro Content",
             type: "group",
             admin:{disableListColumn:true},
             fields: [
@@ -116,7 +116,7 @@ export const Pages: CollectionConfig = {
                 {
                     name: "link",
                     type: "relationship",
-                    relationTo: ["pages"],
+                    relationTo: collectionSlugs,
                 },
                 {
                     name: "internal_link",
@@ -128,83 +128,10 @@ export const Pages: CollectionConfig = {
             ]
         },
         {
-            name: 'parent_page',
-            label: "Parent Page",
-            type: "relationship",
-            relationTo: "pages",
-            filterOptions: ({id}) => {
-                if(!id){
-                    return {};
-                }
-
-                return {
-                    id: {not_equals: id},
-                };
-            },
-            admin: {
-                position: "sidebar"
-            }
-        },
-        {
             name: "excerpt",
             type: "textarea",
             admin: {
                 position: "sidebar"
-            }
-        },
-        {
-            name: 'full_path',
-            label: "Full path",
-            type: "text",
-            admin: {
-                position: "sidebar"
-            },
-            access: {
-                update: () => false,
-                create: () => false,
-            },
-            hooks: {
-                afterRead: [
-                    async ({ data, req }) => {
-                        const { parent_page } = data
-
-                        if (!parent_page) return data.slug
-
-                        const pages = await req.payload.find({
-                            req,
-                            collection: "pages",
-                            where: {
-                                'id': {equals: parent_page}
-                            },
-                            limit: 0,
-                            depth: 0,
-                            pagination: false
-                        });
-
-                        let curr = pages.docs[0];
-                        let final = [];
-                        final.push(data.slug);
-                        final.push(curr.slug);
-
-                        while (curr.parent_page) {
-                            const pages = await req.payload.find({
-                                req,
-                                collection: "pages",
-                                where: {
-                                    'id': {equals: curr.parent_page}
-                                },
-                                limit: 0,
-                                depth: 0,
-                                pagination: false
-                            });
-                            curr = pages.docs[0];
-
-                            final.push(curr.slug);
-                        }
-
-                        return final.reverse().join("/");
-                    }
-                ]
             }
         },
         {
@@ -214,7 +141,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock]
+            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock]
         },
         ...standardFields
     ]

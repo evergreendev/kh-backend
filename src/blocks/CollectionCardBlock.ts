@@ -1,4 +1,5 @@
 import {Block} from "payload/types";
+import {collectionSlugs, collectionSlugsOptions} from "./fields/collectionSlugs";
 
 const CollectionCardBlock:Block = {
     slug: "collectionCards",
@@ -21,13 +22,7 @@ const CollectionCardBlock:Block = {
             name: "collectionsToPull",
             type: "select",
             required: true,
-            options: [
-                {label:"Pages", value:"pages"},
-                {label: "Events",value:"events"},
-                {
-                    label: "Museum Collections",
-                    value:"museumCollections"}
-            ]
+            options: collectionSlugsOptions
         }
     ]
 }
