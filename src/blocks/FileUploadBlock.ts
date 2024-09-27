@@ -16,7 +16,6 @@ export const FileUploadBlock: Block = {
                 {
                     name: 'label',
                     label: 'Label',
-                    localized: true,
                     type: 'text',
                     admin: {width: '50%'}
                 }

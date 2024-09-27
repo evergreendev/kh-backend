@@ -20,11 +20,13 @@ const CollectionCardBlock:Block = {
         {
             name: "collectionsToPull",
             type: "select",
-            hasMany: true,
+            required: true,
             options: [
-                "pages",
-                "events",
-                "collections"
+                {label:"Pages", value:"pages"},
+                {label: "Events",value:"events"},
+                {
+                    label: "Museum Collections",
+                    value:"museumCollections"}
             ]
         }
     ]

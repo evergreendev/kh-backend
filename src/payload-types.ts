@@ -954,7 +954,7 @@ export interface Navigation {
                 | {
                     numberOfItemsToShow?: number | null;
                     type?: ('slider' | 'blocks') | null;
-                    collectionsToPull?: ('pages' | 'events' | 'collections')[] | null;
+                    collectionsToPull?: ('pages' | 'events' | 'museumCollections')[] | null;
                     id?: string | null;
                     blockName?: string | null;
                     blockType: 'collectionCards';
