@@ -102,7 +102,7 @@ export default buildConfig({
             }
         }),
         search({
-            collections: ['pages'],
+            collections: collectionSlugs,
             defaultPriorities: {
                 pages: 10
             },
