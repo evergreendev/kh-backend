@@ -5,14 +5,8 @@ import {populatePublishedAt} from "../../hooks/populatePublishedAt";
 import {revalidatePassionsForTheProject} from "./hooks/revalidatePassionsForTheProject";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
-import Column from "../../blocks/columns/column";
-import BreakerBlock from "../../blocks/BreakerBlock";
-import MediaBlock from "../../blocks/MediaBlock";
-import TextBlock from "../../blocks/TextBlock";
-import HeaderBlock from "../../blocks/HeaderBlock";
-import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
-import CompareSliderBlock from "../../blocks/CompareSliderBlock";
 import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
+import {defaultBlocks} from "../../blocks/defaultBlocks";
 
 export const PassionsForTheProject: CollectionConfig = {
     slug: "passions",
@@ -141,7 +135,7 @@ export const PassionsForTheProject: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock]
+            blocks: defaultBlocks()
         },
         ...standardFields
     ]

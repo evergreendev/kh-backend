@@ -5,13 +5,8 @@ import {populatePublishedAt} from "../../hooks/populatePublishedAt";
 import {revalidateMuseumCollection} from "./hooks/revalidateMuseumCollection";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
-import Column from "../../blocks/columns/column";
-import BreakerBlock from "../../blocks/BreakerBlock";
-import MediaBlock from "../../blocks/MediaBlock";
-import TextBlock from "../../blocks/TextBlock";
-import HeaderBlock from "../../blocks/HeaderBlock";
-import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
-import CompareSliderBlock from "../../blocks/CompareSliderBlock";
+import {defaultBlocks} from "../../blocks/defaultBlocks";
+import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
 
 export const MuseumCollections: CollectionConfig = {
     slug: "museumCollections",
@@ -111,7 +106,7 @@ export const MuseumCollections: CollectionConfig = {
                 {
                     name: "link",
                     type: "relationship",
-                    relationTo: ["museumCollections"],
+                    relationTo: collectionSlugs,
                 },
                 {
                     name: "internal_link",
@@ -136,7 +131,7 @@ export const MuseumCollections: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock]
+            blocks: defaultBlocks()
         },
         ...standardFields
     ]

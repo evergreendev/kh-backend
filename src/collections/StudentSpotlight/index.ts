@@ -2,16 +2,11 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidateStudentSpotlight} from "./hooks/revalidateStudentSpotlightCollection";
+import {revalidateStudentSpotlightCollection} from "./hooks/revalidateStudentSpotlightCollection";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
-import Column from "../../blocks/columns/column";
-import BreakerBlock from "../../blocks/BreakerBlock";
-import MediaBlock from "../../blocks/MediaBlock";
-import TextBlock from "../../blocks/TextBlock";
-import HeaderBlock from "../../blocks/HeaderBlock";
-import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
-import CompareSliderBlock from "../../blocks/CompareSliderBlock";
+import {defaultBlocks} from "../../blocks/defaultBlocks";
+import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
 
 export const StudentSpotlight: CollectionConfig = {
     slug: "studentSpotlight",
@@ -24,7 +19,7 @@ export const StudentSpotlight: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidateStudentSpotlight]
+        afterChange: [revalidateStudentSpotlightCollection]
     },
     versions: {
         drafts: true
@@ -111,7 +106,7 @@ export const StudentSpotlight: CollectionConfig = {
                 {
                     name: "link",
                     type: "relationship",
-                    relationTo: ["museumCollections"],
+                    relationTo: collectionSlugs,
                 },
                 {
                     name: "internal_link",
@@ -136,7 +131,7 @@ export const StudentSpotlight: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock]
+            blocks: defaultBlocks()
         },
         ...standardFields
     ]

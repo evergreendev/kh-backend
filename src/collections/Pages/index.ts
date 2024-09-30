@@ -14,9 +14,9 @@ import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
 import CompareSliderBlock from "../../blocks/CompareSliderBlock";
 import FormBlock from "../../blocks/FormBlock";
 import EmploymentBlock from "../../blocks/EmploymentBlock";
-import CollectionCardBlock from "../../blocks/CollectionCardBlock";
 import collectionCardBlock from "../../blocks/CollectionCardBlock";
 import singleCollectionBlock from "../../blocks/SingleCollectionBlock";
+import SpacerBlock from "../../blocks/SpacerBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -214,7 +214,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock]
+            blocks: [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock]
         },
         ...standardFields
     ]

@@ -13,9 +13,9 @@ export interface Config {
     pages: Page;
     userUploadedFormDocuments: UserUploadedFormDocument;
     employment: Employment;
-    museumCollections: MuseumCollection;
+    museum: Museum;
     impact: Impact;
-    studentSpotlight: StudentSpotlight;
+    student: Student;
     passions: Passion;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -236,27 +236,21 @@ export interface Page {
                             blockType: 'CompareSliderBlock';
                           }
                         | {
+                            height?: number | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'SpacerBlock';
+                          }
+                        | {
                             form?: (number | null) | Form;
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'FormBlock';
                           }
                         | {
-                            company: 'crazy-horse' | 'korczak';
-                            positionType: 'year-round' | 'seasonal';
-                            id?: string | null;
-                            blockName?: string | null;
-                            blockType: 'EmploymentBlock';
-                          }
-                        | {
                             numberOfItemsToShow?: number | null;
                             type?: ('slider' | 'blocks') | null;
-                            collectionsToPull:
-                              | 'pages'
-                              | 'museumCollections'
-                              | 'impact'
-                              | 'passions'
-                              | 'studentSpotlight';
+                            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'collectionCards';
@@ -269,8 +263,8 @@ export interface Page {
                                   value: number | Page;
                                 }
                               | {
-                                  relationTo: 'museumCollections';
-                                  value: number | MuseumCollection;
+                                  relationTo: 'museum';
+                                  value: number | Museum;
                                 }
                               | {
                                   relationTo: 'impact';
@@ -281,8 +275,8 @@ export interface Page {
                                   value: number | Passion;
                                 }
                               | {
-                                  relationTo: 'studentSpotlight';
-                                  value: number | StudentSpotlight;
+                                  relationTo: 'student';
+                                  value: number | Student;
                                 };
                             id?: string | null;
                             blockName?: string | null;
@@ -360,22 +354,21 @@ export interface Page {
             blockType: 'CompareSliderBlock';
           }
         | {
+            height?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SpacerBlock';
+          }
+        | {
             form?: (number | null) | Form;
             id?: string | null;
             blockName?: string | null;
             blockType: 'FormBlock';
           }
         | {
-            company: 'crazy-horse' | 'korczak';
-            positionType: 'year-round' | 'seasonal';
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'EmploymentBlock';
-          }
-        | {
             numberOfItemsToShow?: number | null;
             type?: ('slider' | 'blocks') | null;
-            collectionsToPull: 'pages' | 'museumCollections' | 'impact' | 'passions' | 'studentSpotlight';
+            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
             id?: string | null;
             blockName?: string | null;
             blockType: 'collectionCards';
@@ -388,8 +381,8 @@ export interface Page {
                   value: number | Page;
                 }
               | {
-                  relationTo: 'museumCollections';
-                  value: number | MuseumCollection;
+                  relationTo: 'museum';
+                  value: number | Museum;
                 }
               | {
                   relationTo: 'impact';
@@ -400,8 +393,8 @@ export interface Page {
                   value: number | Passion;
                 }
               | {
-                  relationTo: 'studentSpotlight';
-                  value: number | StudentSpotlight;
+                  relationTo: 'student';
+                  value: number | Student;
                 };
             id?: string | null;
             blockName?: string | null;
@@ -598,9 +591,9 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "museumCollections".
+ * via the `definition` "museum".
  */
-export interface MuseumCollection {
+export interface Museum {
   id: number;
   intro_content?: {
     video?: string | null;
@@ -618,10 +611,27 @@ export interface MuseumCollection {
   jump_menu?:
     | {
         title?: string | null;
-        link?: {
-          relationTo: 'museumCollections';
-          value: number | MuseumCollection;
-        } | null;
+        link?:
+          | ({
+              relationTo: 'pages';
+              value: number | Page;
+            } | null)
+          | ({
+              relationTo: 'museum';
+              value: number | Museum;
+            } | null)
+          | ({
+              relationTo: 'impact';
+              value: number | Impact;
+            } | null)
+          | ({
+              relationTo: 'passions';
+              value: number | Passion;
+            } | null)
+          | ({
+              relationTo: 'student';
+              value: number | Student;
+            } | null);
         internal_link?: string | null;
         id?: string | null;
       }[]
@@ -737,6 +747,53 @@ export interface MuseumCollection {
                             blockName?: string | null;
                             blockType: 'CompareSliderBlock';
                           }
+                        | {
+                            height?: number | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'SpacerBlock';
+                          }
+                        | {
+                            form?: (number | null) | Form;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'FormBlock';
+                          }
+                        | {
+                            numberOfItemsToShow?: number | null;
+                            type?: ('slider' | 'blocks') | null;
+                            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'collectionCards';
+                          }
+                        | {
+                            type?: ('vertical' | 'horizontal') | null;
+                            collection:
+                              | {
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                }
+                              | {
+                                  relationTo: 'museum';
+                                  value: number | Museum;
+                                }
+                              | {
+                                  relationTo: 'impact';
+                                  value: number | Impact;
+                                }
+                              | {
+                                  relationTo: 'passions';
+                                  value: number | Passion;
+                                }
+                              | {
+                                  relationTo: 'student';
+                                  value: number | Student;
+                                };
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'singleCollectionBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -807,6 +864,53 @@ export interface MuseumCollection {
             id?: string | null;
             blockName?: string | null;
             blockType: 'CompareSliderBlock';
+          }
+        | {
+            height?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SpacerBlock';
+          }
+        | {
+            form?: (number | null) | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'FormBlock';
+          }
+        | {
+            numberOfItemsToShow?: number | null;
+            type?: ('slider' | 'blocks') | null;
+            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'collectionCards';
+          }
+        | {
+            type?: ('vertical' | 'horizontal') | null;
+            collection:
+              | {
+                  relationTo: 'pages';
+                  value: number | Page;
+                }
+              | {
+                  relationTo: 'museum';
+                  value: number | Museum;
+                }
+              | {
+                  relationTo: 'impact';
+                  value: number | Impact;
+                }
+              | {
+                  relationTo: 'passions';
+                  value: number | Passion;
+                }
+              | {
+                  relationTo: 'student';
+                  value: number | Student;
+                };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'singleCollectionBlock';
           }
       )[]
     | null;
@@ -845,8 +949,8 @@ export interface Impact {
               value: number | Page;
             } | null)
           | ({
-              relationTo: 'museumCollections';
-              value: number | MuseumCollection;
+              relationTo: 'museum';
+              value: number | Museum;
             } | null)
           | ({
               relationTo: 'impact';
@@ -857,8 +961,8 @@ export interface Impact {
               value: number | Passion;
             } | null)
           | ({
-              relationTo: 'studentSpotlight';
-              value: number | StudentSpotlight;
+              relationTo: 'student';
+              value: number | Student;
             } | null);
         internal_link?: string | null;
         id?: string | null;
@@ -975,6 +1079,53 @@ export interface Impact {
                             blockName?: string | null;
                             blockType: 'CompareSliderBlock';
                           }
+                        | {
+                            height?: number | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'SpacerBlock';
+                          }
+                        | {
+                            form?: (number | null) | Form;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'FormBlock';
+                          }
+                        | {
+                            numberOfItemsToShow?: number | null;
+                            type?: ('slider' | 'blocks') | null;
+                            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'collectionCards';
+                          }
+                        | {
+                            type?: ('vertical' | 'horizontal') | null;
+                            collection:
+                              | {
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                }
+                              | {
+                                  relationTo: 'museum';
+                                  value: number | Museum;
+                                }
+                              | {
+                                  relationTo: 'impact';
+                                  value: number | Impact;
+                                }
+                              | {
+                                  relationTo: 'passions';
+                                  value: number | Passion;
+                                }
+                              | {
+                                  relationTo: 'student';
+                                  value: number | Student;
+                                };
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'singleCollectionBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -1045,6 +1196,53 @@ export interface Impact {
             id?: string | null;
             blockName?: string | null;
             blockType: 'CompareSliderBlock';
+          }
+        | {
+            height?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SpacerBlock';
+          }
+        | {
+            form?: (number | null) | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'FormBlock';
+          }
+        | {
+            numberOfItemsToShow?: number | null;
+            type?: ('slider' | 'blocks') | null;
+            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'collectionCards';
+          }
+        | {
+            type?: ('vertical' | 'horizontal') | null;
+            collection:
+              | {
+                  relationTo: 'pages';
+                  value: number | Page;
+                }
+              | {
+                  relationTo: 'museum';
+                  value: number | Museum;
+                }
+              | {
+                  relationTo: 'impact';
+                  value: number | Impact;
+                }
+              | {
+                  relationTo: 'passions';
+                  value: number | Passion;
+                }
+              | {
+                  relationTo: 'student';
+                  value: number | Student;
+                };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'singleCollectionBlock';
           }
       )[]
     | null;
@@ -1083,8 +1281,8 @@ export interface Passion {
               value: number | Page;
             } | null)
           | ({
-              relationTo: 'museumCollections';
-              value: number | MuseumCollection;
+              relationTo: 'museum';
+              value: number | Museum;
             } | null)
           | ({
               relationTo: 'impact';
@@ -1095,8 +1293,8 @@ export interface Passion {
               value: number | Passion;
             } | null)
           | ({
-              relationTo: 'studentSpotlight';
-              value: number | StudentSpotlight;
+              relationTo: 'student';
+              value: number | Student;
             } | null);
         internal_link?: string | null;
         id?: string | null;
@@ -1213,6 +1411,53 @@ export interface Passion {
                             blockName?: string | null;
                             blockType: 'CompareSliderBlock';
                           }
+                        | {
+                            height?: number | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'SpacerBlock';
+                          }
+                        | {
+                            form?: (number | null) | Form;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'FormBlock';
+                          }
+                        | {
+                            numberOfItemsToShow?: number | null;
+                            type?: ('slider' | 'blocks') | null;
+                            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'collectionCards';
+                          }
+                        | {
+                            type?: ('vertical' | 'horizontal') | null;
+                            collection:
+                              | {
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                }
+                              | {
+                                  relationTo: 'museum';
+                                  value: number | Museum;
+                                }
+                              | {
+                                  relationTo: 'impact';
+                                  value: number | Impact;
+                                }
+                              | {
+                                  relationTo: 'passions';
+                                  value: number | Passion;
+                                }
+                              | {
+                                  relationTo: 'student';
+                                  value: number | Student;
+                                };
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'singleCollectionBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -1284,6 +1529,53 @@ export interface Passion {
             blockName?: string | null;
             blockType: 'CompareSliderBlock';
           }
+        | {
+            height?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SpacerBlock';
+          }
+        | {
+            form?: (number | null) | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'FormBlock';
+          }
+        | {
+            numberOfItemsToShow?: number | null;
+            type?: ('slider' | 'blocks') | null;
+            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'collectionCards';
+          }
+        | {
+            type?: ('vertical' | 'horizontal') | null;
+            collection:
+              | {
+                  relationTo: 'pages';
+                  value: number | Page;
+                }
+              | {
+                  relationTo: 'museum';
+                  value: number | Museum;
+                }
+              | {
+                  relationTo: 'impact';
+                  value: number | Impact;
+                }
+              | {
+                  relationTo: 'passions';
+                  value: number | Passion;
+                }
+              | {
+                  relationTo: 'student';
+                  value: number | Student;
+                };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'singleCollectionBlock';
+          }
       )[]
     | null;
   title: string;
@@ -1295,9 +1587,9 @@ export interface Passion {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "studentSpotlight".
+ * via the `definition` "student".
  */
-export interface StudentSpotlight {
+export interface Student {
   id: number;
   intro_content?: {
     video?: string | null;
@@ -1315,10 +1607,27 @@ export interface StudentSpotlight {
   jump_menu?:
     | {
         title?: string | null;
-        link?: {
-          relationTo: 'museumCollections';
-          value: number | MuseumCollection;
-        } | null;
+        link?:
+          | ({
+              relationTo: 'pages';
+              value: number | Page;
+            } | null)
+          | ({
+              relationTo: 'museum';
+              value: number | Museum;
+            } | null)
+          | ({
+              relationTo: 'impact';
+              value: number | Impact;
+            } | null)
+          | ({
+              relationTo: 'passions';
+              value: number | Passion;
+            } | null)
+          | ({
+              relationTo: 'student';
+              value: number | Student;
+            } | null);
         internal_link?: string | null;
         id?: string | null;
       }[]
@@ -1434,6 +1743,53 @@ export interface StudentSpotlight {
                             blockName?: string | null;
                             blockType: 'CompareSliderBlock';
                           }
+                        | {
+                            height?: number | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'SpacerBlock';
+                          }
+                        | {
+                            form?: (number | null) | Form;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'FormBlock';
+                          }
+                        | {
+                            numberOfItemsToShow?: number | null;
+                            type?: ('slider' | 'blocks') | null;
+                            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'collectionCards';
+                          }
+                        | {
+                            type?: ('vertical' | 'horizontal') | null;
+                            collection:
+                              | {
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                }
+                              | {
+                                  relationTo: 'museum';
+                                  value: number | Museum;
+                                }
+                              | {
+                                  relationTo: 'impact';
+                                  value: number | Impact;
+                                }
+                              | {
+                                  relationTo: 'passions';
+                                  value: number | Passion;
+                                }
+                              | {
+                                  relationTo: 'student';
+                                  value: number | Student;
+                                };
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'singleCollectionBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -1504,6 +1860,53 @@ export interface StudentSpotlight {
             id?: string | null;
             blockName?: string | null;
             blockType: 'CompareSliderBlock';
+          }
+        | {
+            height?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'SpacerBlock';
+          }
+        | {
+            form?: (number | null) | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'FormBlock';
+          }
+        | {
+            numberOfItemsToShow?: number | null;
+            type?: ('slider' | 'blocks') | null;
+            collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'collectionCards';
+          }
+        | {
+            type?: ('vertical' | 'horizontal') | null;
+            collection:
+              | {
+                  relationTo: 'pages';
+                  value: number | Page;
+                }
+              | {
+                  relationTo: 'museum';
+                  value: number | Museum;
+                }
+              | {
+                  relationTo: 'impact';
+                  value: number | Impact;
+                }
+              | {
+                  relationTo: 'passions';
+                  value: number | Passion;
+                }
+              | {
+                  relationTo: 'student';
+                  value: number | Student;
+                };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'singleCollectionBlock';
           }
       )[]
     | null;
@@ -1602,10 +2005,27 @@ export interface Search {
   id: number;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'pages';
-    value: number | Page;
-  };
+  doc:
+    | {
+        relationTo: 'pages';
+        value: number | Page;
+      }
+    | {
+        relationTo: 'museum';
+        value: number | Museum;
+      }
+    | {
+        relationTo: 'impact';
+        value: number | Impact;
+      }
+    | {
+        relationTo: 'passions';
+        value: number | Passion;
+      }
+    | {
+        relationTo: 'student';
+        value: number | Student;
+      };
   updatedAt: string;
   createdAt: string;
 }
@@ -1729,7 +2149,7 @@ export interface Navigation {
                 | {
                     numberOfItemsToShow?: number | null;
                     type?: ('slider' | 'blocks') | null;
-                    collectionsToPull: 'pages' | 'museumCollections' | 'impact' | 'passions' | 'studentSpotlight';
+                    collectionsToPull: 'pages' | 'museum' | 'impact' | 'passions' | 'student';
                     id?: string | null;
                     blockName?: string | null;
                     blockType: 'collectionCards';
