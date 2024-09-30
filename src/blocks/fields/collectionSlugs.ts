@@ -13,11 +13,11 @@ export const collectionSlugsOptions = [
         value:"museumCollections"},
     {
         label: "Continuing To Impact",
-        value: "ContinuingToImpact"
+        value: "impact"
     },
     {
         label: "Passions For The Project",
-        value: "passionsForTheProject",
+        value: "passions",
     },
     {
         label: "Student Spotlight",

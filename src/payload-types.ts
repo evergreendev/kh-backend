@@ -254,8 +254,8 @@ export interface Page {
                             collectionsToPull:
                               | 'pages'
                               | 'museumCollections'
-                              | 'ContinuingToImpact'
-                              | 'passionsForTheProject'
+                              | 'impact'
+                              | 'passions'
                               | 'studentSpotlight';
                             id?: string | null;
                             blockName?: string | null;
@@ -375,12 +375,7 @@ export interface Page {
         | {
             numberOfItemsToShow?: number | null;
             type?: ('slider' | 'blocks') | null;
-            collectionsToPull:
-              | 'pages'
-              | 'museumCollections'
-              | 'ContinuingToImpact'
-              | 'passionsForTheProject'
-              | 'studentSpotlight';
+            collectionsToPull: 'pages' | 'museumCollections' | 'impact' | 'passions' | 'studentSpotlight';
             id?: string | null;
             blockName?: string | null;
             blockType: 'collectionCards';
@@ -1734,12 +1729,7 @@ export interface Navigation {
                 | {
                     numberOfItemsToShow?: number | null;
                     type?: ('slider' | 'blocks') | null;
-                    collectionsToPull:
-                      | 'pages'
-                      | 'museumCollections'
-                      | 'ContinuingToImpact'
-                      | 'passionsForTheProject'
-                      | 'studentSpotlight';
+                    collectionsToPull: 'pages' | 'museumCollections' | 'impact' | 'passions' | 'studentSpotlight';
                     id?: string | null;
                     blockName?: string | null;
                     blockType: 'collectionCards';
