@@ -24,6 +24,7 @@ import {MuseumCollections} from "./collections/MuseumCollections";
 import {ContinuingToImpact} from "./collections/ContinuingToImpact";
 import {StudentSpotlight} from "./collections/StudentSpotlight";
 import {PassionsForTheProject} from "./collections/PassionsForTheProject";
+import {collectionSlugs} from "./blocks/fields/collectionSlugs";
 
 // @ts-ignore
 export default buildConfig({
@@ -47,10 +48,10 @@ export default buildConfig({
                         return feature.key !== 'upload' && feature.key !== 'checkList'
                     }),
                     LinkFeature({
-                        enabledCollections: ["pages"]
+                        enabledCollections: collectionSlugs
                     }),
                     RelationshipFeature({
-                        enabledCollections: ["pages"]
+                        enabledCollections: collectionSlugs
                     }),
                     HTMLConverterFeature({}),
                 ]
