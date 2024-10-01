@@ -48,7 +48,7 @@ export default buildConfig({
                         return feature.key !== 'upload' && feature.key !== 'checkList'
                     }),
                     LinkFeature({
-                        enabledCollections: collectionSlugs
+                        enabledCollections: [...collectionSlugs, "media"]
                     }),
                     RelationshipFeature({
                         enabledCollections: collectionSlugs
