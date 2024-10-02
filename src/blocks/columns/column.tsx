@@ -12,6 +12,11 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
         },
         fields: [
             {
+                type: "text",
+                name: "sectionID",
+                label: "ID (optional)"
+            },
+            {
                 type: "checkbox",
                 name: "vertical_separator",
                 label: "Vertical separator",
