@@ -12,6 +12,10 @@ const GalleryBlock:Block = {
                     type: "upload",
                     required: true,
                     relationTo: "media"
+                },
+                {
+                    name: "caption",
+                    type: "text"
                 }
             ]
         },
