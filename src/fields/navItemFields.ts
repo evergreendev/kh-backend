@@ -1,4 +1,5 @@
 import {Field} from "payload/types";
+import {collectionSlugs} from "../blocks/fields/collectionSlugs";
 
 const navItemFields: Field[] = [{
     name: "title",
@@ -17,7 +18,7 @@ const navItemFields: Field[] = [{
             }
         },
     type: "relationship",
-    relationTo: ["pages"],
+    relationTo: collectionSlugs,
 },
     {
         name: "external_url",
