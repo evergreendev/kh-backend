@@ -7,5 +7,6 @@ import HeaderBlock from "./HeaderBlock";
 import CompareSliderBlock from "./CompareSliderBlock";
 import BreakerBlock from "./BreakerBlock";
 import FormBlock from "./FormBlock";
+import GalleryBlock from "./GalleryBlock";
 
-export const defaultBlocks = ()=> [Column([MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,SpacerBlock,FormBlock]),BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,SpacerBlock,FormBlock]
+export const defaultBlocks = ()=> [Column([GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,SpacerBlock,FormBlock]),GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,SpacerBlock,FormBlock]
