@@ -11,6 +11,16 @@ const MenuButtonBlock:Block = {
             options: ["primary","secondary","tertiary","highlight","text"]
         },
         {
+            name: "fragment",
+            type: "text",
+            admin: {
+                description:"Used to scroll to a section on the specified page",
+                condition: (data, siblingData) => {
+                    return !siblingData.external;
+                }
+            }
+        },
+        {
             name: "hasIcon",
             type: "checkbox",
         }
