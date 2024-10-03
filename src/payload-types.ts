@@ -2630,6 +2630,14 @@ export interface Navigation {
                     blockName?: string | null;
                     blockType: 'collectionCards';
                   }
+                | {
+                    media?: number | Media | null;
+                    thumbnail?: number | Media | null;
+                    expandImage?: boolean | null;
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'MediaBlock';
+                  }
               )[]
             | null;
           width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;

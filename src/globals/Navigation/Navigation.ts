@@ -8,6 +8,7 @@ import MenuWithSubMenuBlock from "../../blocks/navigation/MenuWithSubMenu";
 import MenuButtonBlock from "../../blocks/navigation/MenuButtonBlock";
 import collectionCardBlock from "../../blocks/CollectionCardBlock";
 import {isAdmin} from "../../access/isAdmin";
+import MediaBlock from "../../blocks/MediaBlock";
 
 export const Navigation: GlobalConfig = {
     slug: "navigation",
@@ -43,7 +44,7 @@ export const Navigation: GlobalConfig = {
                         {
                             name: "content",
                             type: "blocks",
-                            blocks: [MenuButtonBlock,MenuWithSubMenuBlock,PhotoMenuBlock, collectionCardBlock]
+                            blocks: [MenuButtonBlock,MenuWithSubMenuBlock,PhotoMenuBlock, collectionCardBlock, MediaBlock]
                         },
                         widthField
                     ]
