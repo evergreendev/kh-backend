@@ -66,6 +66,11 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
                     },
                     widthField,
                     {
+                        name: "center",
+                        label: "Center column",
+                        type: "checkbox"
+                    },
+                    {
                         name: "linkLabel",
                         type: "ui",
                         admin: {
