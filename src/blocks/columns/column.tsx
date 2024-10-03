@@ -71,6 +71,11 @@ const Column: (contentBlocks:Block[]) => Block = (contentBlocks) => {
                         type: "checkbox"
                     },
                     {
+                        name: "centerVert",
+                        label: "Center Column Elements Vertically",
+                        type: "checkbox"
+                    },
+                    {
                         name: "linkLabel",
                         type: "ui",
                         admin: {
