@@ -152,6 +152,7 @@ export interface Page {
                           }
                         | {
                             media?: number | Media | null;
+                            url?: string | null;
                             thumbnail?: number | Media | null;
                             expandImage?: boolean | null;
                             id?: string | null;
@@ -448,6 +449,7 @@ export interface Page {
           }
         | {
             media?: number | Media | null;
+            url?: string | null;
             thumbnail?: number | Media | null;
             expandImage?: boolean | null;
             id?: string | null;
@@ -635,6 +637,7 @@ export interface MuseumCollection {
                           }
                         | {
                             media?: number | Media | null;
+                            url?: string | null;
                             thumbnail?: number | Media | null;
                             expandImage?: boolean | null;
                             id?: string | null;
@@ -884,6 +887,7 @@ export interface MuseumCollection {
           }
         | {
             media?: number | Media | null;
+            url?: string | null;
             thumbnail?: number | Media | null;
             expandImage?: boolean | null;
             id?: string | null;
@@ -1024,6 +1028,7 @@ export interface Impact {
                           }
                         | {
                             media?: number | Media | null;
+                            url?: string | null;
                             thumbnail?: number | Media | null;
                             expandImage?: boolean | null;
                             id?: string | null;
@@ -1273,6 +1278,7 @@ export interface Impact {
           }
         | {
             media?: number | Media | null;
+            url?: string | null;
             thumbnail?: number | Media | null;
             expandImage?: boolean | null;
             id?: string | null;
@@ -1413,6 +1419,7 @@ export interface Passion {
                           }
                         | {
                             media?: number | Media | null;
+                            url?: string | null;
                             thumbnail?: number | Media | null;
                             expandImage?: boolean | null;
                             id?: string | null;
@@ -1662,6 +1669,7 @@ export interface Passion {
           }
         | {
             media?: number | Media | null;
+            url?: string | null;
             thumbnail?: number | Media | null;
             expandImage?: boolean | null;
             id?: string | null;
@@ -1802,6 +1810,7 @@ export interface StudentSpotlight {
                           }
                         | {
                             media?: number | Media | null;
+                            url?: string | null;
                             thumbnail?: number | Media | null;
                             expandImage?: boolean | null;
                             id?: string | null;
@@ -2051,6 +2060,7 @@ export interface StudentSpotlight {
           }
         | {
             media?: number | Media | null;
+            url?: string | null;
             thumbnail?: number | Media | null;
             expandImage?: boolean | null;
             id?: string | null;
@@ -2632,6 +2642,7 @@ export interface Navigation {
                   }
                 | {
                     media?: number | Media | null;
+                    url?: string | null;
                     thumbnail?: number | Media | null;
                     expandImage?: boolean | null;
                     id?: string | null;
