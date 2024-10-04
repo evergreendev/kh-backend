@@ -35,6 +35,15 @@ export const Breaker: Block = {
             ]
         },
         {
+            name: "image",
+            type: "upload",
+            relationTo: "media"
+        },
+        {
+            name: "noButton",
+            type: "checkbox"
+        },
+        {
             name: "button",
             type: "group",
             fields: [
