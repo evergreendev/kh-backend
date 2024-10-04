@@ -26,6 +26,7 @@ import {StudentSpotlight} from "./collections/StudentSpotlight";
 import {PassionsForTheProject} from "./collections/PassionsForTheProject";
 import {collectionSlugs} from "./blocks/fields/collectionSlugs";
 import {Support} from "./collections/Support";
+import {EventCollections} from "./collections/Events";
 
 // @ts-ignore
 export default buildConfig({
@@ -61,7 +62,7 @@ export default buildConfig({
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject,Support],
+        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject,Support,EventCollections],
     globals:
         [Navigation, SiteOptions, Hours, Footer],
     typescript:
