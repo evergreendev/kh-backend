@@ -121,7 +121,7 @@ export const EventCollections: CollectionConfig = {
             name: "excerpt",
             type: "textarea",
             admin: {
-                position: "sidebar"
+                description: "This content is only displayed when the event is displayed in a list. (Calendar page, etc)"
             }
         },
         {
@@ -185,15 +185,15 @@ export const EventCollections: CollectionConfig = {
                         },
                     ]
                 },
-                {
-                    name: "noSchedule",
-                    label: "Post Event Message",
-                    type: "richText",
-                    admin: {
-                        description: "What message should display after the last schedule item passes? Leave blank to show nothing"
-                    }
-                }
             ]
+        },
+        {
+            name: "noSchedule",
+            label: "Post Event Message",
+            type: "richText",
+            admin: {
+                description: "What message should display after the last schedule item passes? Leave blank to show nothing"
+            }
         },
         ...standardFields
     ]
