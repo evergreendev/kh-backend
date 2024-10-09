@@ -20,6 +20,7 @@ import GalleryBlock from "../../blocks/GalleryBlock";
 import PictureTimeline from "../../blocks/PictureTimeline";
 import {deleteItem} from "../../hooks/deleteItem";
 import {revalidateItem} from "../../hooks/revalidateItem";
+import ImageCard from "../../blocks/ImageCard";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -218,7 +219,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline]),GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline]
+            blocks: [Column([ImageCard, GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline]),ImageCard, GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline]
         },
         ...standardFields
     ]
