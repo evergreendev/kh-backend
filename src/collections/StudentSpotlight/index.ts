@@ -2,11 +2,12 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidateStudentSpotlightCollection} from "./hooks/revalidateStudentSpotlightCollection";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {defaultBlocks} from "../../blocks/defaultBlocks";
 import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
+import {revalidateItem} from "../../hooks/revalidateItem";
+import {deleteItem} from "../../hooks/deleteItem";
 
 export const StudentSpotlight: CollectionConfig = {
     slug: "studentSpotlight",
@@ -19,7 +20,8 @@ export const StudentSpotlight: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidateStudentSpotlightCollection]
+        afterChange: [revalidateItem],
+        afterDelete: [deleteItem]
     },
     versions: {
         drafts: true

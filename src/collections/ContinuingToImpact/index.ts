@@ -2,11 +2,12 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidateContinuingToImpact} from "./hooks/revalidateContinuingToImpact";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
 import {defaultBlocks} from "../../blocks/defaultBlocks";
+import {revalidateItem} from "../../hooks/revalidateItem";
+import {deleteItem} from "../../hooks/deleteItem";
 
 export const ContinuingToImpact: CollectionConfig = {
     slug: "impact",
@@ -23,7 +24,8 @@ export const ContinuingToImpact: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidateContinuingToImpact]
+        afterChange: [revalidateItem],
+        afterDelete: [deleteItem]
     },
     versions: {
         drafts: true

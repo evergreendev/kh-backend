@@ -2,11 +2,12 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidateEventCollection} from "./hooks/revalidateEventCollection";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {defaultBlocks} from "../../blocks/defaultBlocks";
 import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
+import {revalidateItem} from "../../hooks/revalidateItem";
+import {deleteItem} from "../../hooks/deleteItem";
 
 export const EventCollections: CollectionConfig = {
     slug: "event",
@@ -19,7 +20,8 @@ export const EventCollections: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidateEventCollection]
+        afterChange: [revalidateItem],
+        afterDelete: [deleteItem]
     },
     versions: {
         drafts: true

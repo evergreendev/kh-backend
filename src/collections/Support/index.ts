@@ -2,11 +2,12 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidateSupport} from "./hooks/revalidateSupport";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
 import {defaultBlocks} from "../../blocks/defaultBlocks";
+import {revalidateItem} from "../../hooks/revalidateItem";
+import {deleteItem} from "../../hooks/deleteItem";
 
 export const Support: CollectionConfig = {
     slug: "support",
@@ -23,7 +24,8 @@ export const Support: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidateSupport]
+        afterChange: [revalidateItem],
+        afterDelete: [deleteItem]
     },
     versions: {
         drafts: true

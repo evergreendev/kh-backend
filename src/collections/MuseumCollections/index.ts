@@ -2,11 +2,12 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidateMuseumCollection} from "./hooks/revalidateMuseumCollection";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {defaultBlocks} from "../../blocks/defaultBlocks";
 import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
+import {revalidateItem} from "../../hooks/revalidateItem";
+import {deleteItem} from "../../hooks/deleteItem";
 
 export const MuseumCollections: CollectionConfig = {
     slug: "museumCollections",
@@ -19,7 +20,8 @@ export const MuseumCollections: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidateMuseumCollection]
+        afterChange: [revalidateItem],
+        afterDelete: [deleteItem]
     },
     versions: {
         drafts: true

@@ -2,7 +2,6 @@ import {CollectionConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
-import {revalidatePage} from "./hooks/revalidatePage";
 import standardFields from "../../fields/standardFields";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import Column from "../../blocks/columns/column";
@@ -19,6 +18,8 @@ import singleCollectionBlock from "../../blocks/SingleCollectionBlock";
 import SpacerBlock from "../../blocks/SpacerBlock";
 import GalleryBlock from "../../blocks/GalleryBlock";
 import PictureTimeline from "../../blocks/PictureTimeline";
+import {deleteItem} from "../../hooks/deleteItem";
+import {revalidateItem} from "../../hooks/revalidateItem";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -31,7 +32,8 @@ export const Pages: CollectionConfig = {
     },
     hooks: {
         beforeChange: [populatePublishedAt],
-        afterChange: [revalidatePage]
+        afterChange: [revalidateItem],
+        afterDelete: [deleteItem]
     },
     versions: {
         drafts: true
