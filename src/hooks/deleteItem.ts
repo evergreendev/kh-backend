@@ -1,4 +1,4 @@
-import type {AfterChangeHook, AfterDeleteHook} from 'payload/dist/collections/config/types'
+import type { AfterDeleteHook} from 'payload/dist/collections/config/types'
 
 import { revalidate } from '../utilities/revalidate'
 
