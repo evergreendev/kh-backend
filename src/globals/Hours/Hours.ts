@@ -1,6 +1,7 @@
 import {GlobalConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
+import {fixDuplicationHook} from "../../hooks/fixDuplicationHook";
 
 export const Hours: GlobalConfig = {
     slug: "hours",
@@ -15,25 +16,14 @@ export const Hours: GlobalConfig = {
         {
             name: "Schedules",
             type: "array",
+            hooks: {
+                beforeChange: [
+                    fixDuplicationHook
+                ]
+            },
             fields: [{
                 type: "row",
                 fields: [
-                    {
-                        name: "schedule_start",
-                        label: "Schedule Start",
-                        type: "date",
-                        admin: {
-                            width: '50%',
-                        },
-                    },
-                    {
-                        name: "schedule_end",
-                        label: "Schedule End",
-                        type: "date",
-                        admin: {
-                            width: '50%',
-                        },
-                    },
                     {
                         name: "hours",
                         type: "array",
