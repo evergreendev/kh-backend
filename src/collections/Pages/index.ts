@@ -21,6 +21,7 @@ import PictureTimeline from "../../blocks/PictureTimeline";
 import {deleteItem} from "../../hooks/deleteItem";
 import {revalidateItem} from "../../hooks/revalidateItem";
 import ImageCard from "../../blocks/ImageCard";
+import {fixDuplicationCollectionHook} from "../../hooks/fixDuplicationCollectionHook";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -32,7 +33,7 @@ export const Pages: CollectionConfig = {
         },
     },
     hooks: {
-        beforeChange: [populatePublishedAt],
+        beforeChange: [populatePublishedAt, fixDuplicationCollectionHook],
         afterChange: [revalidateItem],
         afterDelete: [deleteItem]
     },

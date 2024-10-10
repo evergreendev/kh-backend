@@ -27,6 +27,7 @@ import {PassionsForTheProject} from "./collections/PassionsForTheProject";
 import {collectionSlugs} from "./blocks/fields/collectionSlugs";
 import {Support} from "./collections/Support";
 import {EventCollections} from "./collections/Events";
+import {fixDuplicationCollectionHook} from "./hooks/fixDuplicationCollectionHook";
 
 // @ts-ignore
 export default buildConfig({
@@ -99,6 +100,7 @@ export default buildConfig({
             },
             formOverrides: {
                 hooks: {
+                    beforeChange: [fixDuplicationCollectionHook],
                     afterChange: [revalidateForm]
                 },
             }
