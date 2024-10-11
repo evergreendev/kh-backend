@@ -11,8 +11,8 @@ export const UserUploadedFormDocuments: CollectionConfig = {
         hidden: ({user})=> user.role !== "admin"
     },
     upload: {
-        staticURL: "/media",
-        staticDir: "media",
+        staticURL: "/user-uploaded-documents",
+        staticDir: "user-uploaded-documents",
         imageSizes: [
             {
                 name: 'thumbnail',
