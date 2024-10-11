@@ -8,6 +8,9 @@ function generatePayloadID() {
 }
 
 function recurseField(field: any, shouldGenerateId:boolean,seenIds) {
+    if(field instanceof Date){
+        return field;
+    }
     if (!(typeof field === 'object' && !Array.isArray(field) && field !== null) && !Array.isArray(field)) {
         if(!shouldGenerateId){
             return field;
