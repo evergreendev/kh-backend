@@ -2,6 +2,7 @@ import {GlobalConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {fixDuplicationHook} from "../../hooks/fixDuplicationHook";
+import {useField} from "payload/components/forms";
 
 export const Calendar: GlobalConfig = {
     slug: "calendar",
@@ -38,6 +39,17 @@ export const Calendar: GlobalConfig = {
                     relationTo: ["event"]
                 },
                 {
+                    name: "location",
+                    type: "select",
+                    options: [
+                        "Cultural Center",
+                        "Covered Porch",
+                        "Museum Galleries",
+                        "Veranda Stage",
+                        "Sign up in WC Lobby"
+                    ]
+                },
+                {
                     type: "row",
                     fields: [
                         {
@@ -53,6 +65,20 @@ export const Calendar: GlobalConfig = {
                             name: "dates",
                             type: "array",
                             admin: {
+                                components: {
+                                    RowLabel: ({ data, index, path: arrayFieldPath }) => {
+                                        // arrayFieldPath example: "Navs.0"
+                                        const path = `${arrayFieldPath}.date`
+                                        const { value } = useField({ path })
+
+                                        if (value) {
+                                            const dateObj = new Date(value);
+                                            return dateObj.getMonth()+1 +"/"+ dateObj.getDate() +"/" +dateObj.getFullYear();
+                                        }
+
+                                        return `Item ${index + 1}`;
+                                    }
+                                },
                                 width: "100%",
                                 condition: (siblingData) => {
                                     return !siblingData?.monthLongEvent;
@@ -67,37 +93,52 @@ export const Calendar: GlobalConfig = {
 
                         },
                         {
-                            name: "hour_start",
-                            label: "Start Time",
-                            type: "date",
+                            name: "times",
+                            type: "array",
                             admin: {
-                                width: '50%',
-                                condition: (siblingData) => {
-                                    return !siblingData?.monthLongEvent;
-                                },
-                                date: {
-                                    timeIntervals: 10,
-                                    pickerAppearance: 'timeOnly',
-                                    displayFormat: 'h:mm a',
-                                },
+                                width: "100%"
                             },
+                            fields: [
+                                {
+                                    type: "row",
+                                    fields: [{
+                                        name: "hour_start",
+                                        label: "Start Time",
+                                        type: "date",
+                                        admin: {
+                                            width: '50%',
+                                            condition: (siblingData) => {
+                                                return !siblingData?.monthLongEvent;
+                                            },
+                                            date: {
+                                                timeIntervals: 5,
+                                                pickerAppearance: 'timeOnly',
+                                                displayFormat: 'h:mm a',
+                                            },
+                                        },
+                                    },
+                                        {
+                                            name: "hour_end",
+                                            label: "End Time",
+                                            type: "date",
+                                            admin: {
+                                                width: '50%',
+                                                condition: (siblingData) => {
+                                                    return !siblingData?.monthLongEvent;
+                                                },
+                                                date: {
+                                                    timeIntervals: 5,
+                                                    pickerAppearance: 'timeOnly',
+                                                    displayFormat: 'h:mm a',
+                                                },
+                                            },
+                                        },
+                                    ]
+                                }
+
+                            ]
                         },
-                        {
-                            name: "hour_end",
-                            label: "End Time",
-                            type: "date",
-                            admin: {
-                                width: '50%',
-                                condition: (siblingData) => {
-                                    return !siblingData?.monthLongEvent;
-                                },
-                                date: {
-                                    timeIntervals: 10,
-                                    pickerAppearance: 'timeOnly',
-                                    displayFormat: 'h:mm a',
-                                },
-                            },
-                        },
+
                     ]
                 },
             ]
