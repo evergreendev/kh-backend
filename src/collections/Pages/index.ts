@@ -22,6 +22,7 @@ import {deleteItem} from "../../hooks/deleteItem";
 import {revalidateItem} from "../../hooks/revalidateItem";
 import ImageCard from "../../blocks/ImageCard";
 import {fixDuplicationCollectionHook} from "../../hooks/fixDuplicationCollectionHook";
+import CalendarBlock from "../../blocks/CalendarBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -220,7 +221,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([ImageCard, GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline]),ImageCard, GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline]
+            blocks: [Column([ImageCard, GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock]),ImageCard, GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock]
         },
         ...standardFields
     ]
