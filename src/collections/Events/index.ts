@@ -120,13 +120,6 @@ export const EventCollections: CollectionConfig = {
             ]
         },
         {
-            name: "excerpt",
-            type: "textarea",
-            admin: {
-                description: "This content is only displayed when the event is displayed in a list. (Calendar page, etc)"
-            }
-        },
-        {
             name: "layout",
             type: "blocks",
             labels: {
@@ -134,14 +127,6 @@ export const EventCollections: CollectionConfig = {
                 plural: "rows",
             },
             blocks: defaultBlocks()
-        },
-        {
-            name: "shouldLink",
-            label: "Link Schedule block to event Page?",
-            type: "checkbox",
-            admin: {
-                description: "When all events are listed out, should this event have a link to it's own page with more info?"
-            }
         },
         {
             name: "schedule",

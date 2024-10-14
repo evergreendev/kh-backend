@@ -28,6 +28,7 @@ import {collectionSlugs} from "./blocks/fields/collectionSlugs";
 import {Support} from "./collections/Support";
 import {EventCollections} from "./collections/Events";
 import {fixDuplicationCollectionHook} from "./hooks/fixDuplicationCollectionHook";
+import {Calendar} from "./globals/Calendar/Calendar";
 
 // @ts-ignore
 export default buildConfig({
@@ -65,7 +66,7 @@ export default buildConfig({
     collections:
         [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject,Support,EventCollections],
     globals:
-        [Navigation, SiteOptions, Hours, Footer],
+        [Navigation, SiteOptions, Hours, Footer, Calendar],
     typescript:
         {
             outputFile: path.resolve(__dirname, 'payload-types.ts'),
