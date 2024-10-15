@@ -3,11 +3,15 @@ import {isAdmin} from "../../access/isAdmin";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {fixDuplicationHook} from "../../hooks/fixDuplicationHook";
 import {useField} from "payload/components/forms";
+import {revalidateSiteOptions} from "../hooks/revalidateSiteOptions";
 
 export const Calendar: GlobalConfig = {
     slug: "calendar",
     admin: {
         hidden: ({user}) => user.role !== "admin"
+    },
+    hooks:{
+        afterChange: [revalidateSiteOptions]
     },
     access: {
         read: () => true,
