@@ -4135,6 +4135,8 @@ export interface Hour {
   id: number;
   Schedules?:
     | {
+        schedule_start?: string | null;
+        schedule_end?: string | null;
         hours?:
           | {
               title?: string | null;

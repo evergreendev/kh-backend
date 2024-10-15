@@ -25,6 +25,22 @@ export const Hours: GlobalConfig = {
                 type: "row",
                 fields: [
                     {
+                        name: "schedule_start",
+                        label: "Schedule Start",
+                        type: "date",
+                        admin: {
+                            width: '50%',
+                        },
+                    },
+                    {
+                        name: "schedule_end",
+                        label: "Schedule End",
+                        type: "date",
+                        admin: {
+                            width: '50%',
+                        },
+                    },
+                    {
                         name: "hours",
                         type: "array",
                         admin: {
