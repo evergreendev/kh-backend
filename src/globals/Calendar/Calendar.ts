@@ -37,6 +37,10 @@ export const Calendar: GlobalConfig = {
                     type: "text"
                 },
                 {
+                    name: "description",
+                    type: "textarea"
+                },
+                {
                     name: "eventPage",
                     label: "Link to event page (optional)",
                     type: "relationship",
