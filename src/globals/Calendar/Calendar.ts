@@ -76,7 +76,7 @@ export const Calendar: GlobalConfig = {
                                         const { value } = useField({ path })
 
                                         if (value) {
-                                            const dateObj = new Date(value);
+                                            const dateObj = new Date(value as string);
                                             return dateObj.getMonth()+1 +"/"+ dateObj.getDate() +"/" +dateObj.getFullYear();
                                         }
 
