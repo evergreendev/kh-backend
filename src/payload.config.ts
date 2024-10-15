@@ -29,6 +29,7 @@ import {Support} from "./collections/Support";
 import {EventCollections} from "./collections/Events";
 import {fixDuplicationCollectionHook} from "./hooks/fixDuplicationCollectionHook";
 import {Calendar} from "./globals/Calendar/Calendar";
+import {EventCategories} from "./collections/Events/EventCategories";
 
 // @ts-ignore
 export default buildConfig({
@@ -64,7 +65,7 @@ export default buildConfig({
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject,Support,EventCollections],
+        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject,Support,EventCollections,EventCategories],
     globals:
         [Navigation, SiteOptions, Hours, Footer, Calendar],
     typescript:

@@ -3,14 +3,16 @@ import {isAdmin} from "../../access/isAdmin";
 import {isAdminOrPublished} from "../../access/isAdminOrPublished";
 import {populatePublishedAt} from "../../hooks/populatePublishedAt";
 import standardFields from "../../fields/standardFields";
-import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {defaultBlocks} from "../../blocks/defaultBlocks";
-import {collectionSlugs} from "../../blocks/fields/collectionSlugs";
 import {revalidateItem} from "../../hooks/revalidateItem";
 import {deleteItem} from "../../hooks/deleteItem";
 
-export const EventCollections: CollectionConfig = {
-    slug: "event",
+export const EventCategories: CollectionConfig = {
+    slug: "eventCat",
+    labels: {
+        singular: "Event Category",
+        plural: "Event Categories"
+    },
     admin: {
         useAsTitle: "title",
         hidden: ({user}) => user.role !== "admin",
@@ -18,13 +20,13 @@ export const EventCollections: CollectionConfig = {
             url: ({data}) => `${process.env.PAYLOAD_PUBLIC_NEXT_URL}/museum-collection/${data.slug}?draft=true&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`,
         },
     },
+    versions: {
+        drafts: true
+    },
     hooks: {
         beforeChange: [populatePublishedAt],
         afterChange: [revalidateItem],
         afterDelete: [deleteItem]
-    },
-    versions: {
-        drafts: true
     },
     access: {
         read: isAdminOrPublished(),
@@ -87,39 +89,6 @@ export const EventCollections: CollectionConfig = {
             ]
         },
         {
-            name: "jump_menu",
-            label: "Jump Menu",
-            type: "array",
-            admin: {
-                components: {
-                    RowLabel: ArrayRowLabel
-                },
-                description: "Each jump menu nav item should have either a Link to another page, or an internal link to a section within the current page"
-            },
-            labels: {
-                singular: "item",
-                plural: "items"
-            },
-            fields: [
-                {
-                    name: "title",
-                    type: "text"
-                },
-                {
-                    name: "link",
-                    type: "relationship",
-                    relationTo: collectionSlugs,
-                },
-                {
-                    name: "internal_link",
-                    type: "text",
-                    admin: {
-                        description: "Used to link to sections within the current page. Name sections the same as this to link"
-                    }
-                }
-            ]
-        },
-        {
             name: "layout",
             type: "blocks",
             labels: {
@@ -129,13 +98,5 @@ export const EventCollections: CollectionConfig = {
             blocks: defaultBlocks()
         },
         ...standardFields,
-        {
-            name: "eventCategory",
-            type: "relationship",
-            relationTo: "eventCat",
-            admin: {
-                position: "sidebar"
-            },
-        }
     ]
 }

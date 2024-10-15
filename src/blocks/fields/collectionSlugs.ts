@@ -5,7 +5,8 @@ export const collectionSlugs = [
     "passions",
     "studentSpotlight",
     "support",
-    "event"
+    "event",
+    "eventCat"
 ]
 
 export const collectionSlugsOptions = [
