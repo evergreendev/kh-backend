@@ -1,7 +1,13 @@
 import path from 'path'
 import {postgresAdapter} from '@payloadcms/db-postgres'
 import {webpackBundler} from '@payloadcms/bundler-webpack'
-import {HTMLConverterFeature, lexicalEditor, LinkFeature, RelationshipFeature} from "@payloadcms/richtext-lexical";
+import {
+    HTMLConverterFeature,
+    lexicalEditor,
+    LinkFeature,
+    RelationshipFeature,
+    BlocksFeature
+} from "@payloadcms/richtext-lexical";
 import {buildConfig} from 'payload/config'
 import search from '@payloadcms/plugin-search'
 import formBuilder from '@payloadcms/plugin-form-builder'
@@ -30,6 +36,7 @@ import {EventCollections} from "./collections/Events";
 import {fixDuplicationCollectionHook} from "./hooks/fixDuplicationCollectionHook";
 import {Calendar} from "./globals/Calendar/Calendar";
 import {EventCategories} from "./collections/Events/EventCategories";
+import HoursBlock from "./blocks/HoursBlock";
 
 // @ts-ignore
 export default buildConfig({
@@ -59,13 +66,16 @@ export default buildConfig({
                         enabledCollections: collectionSlugs
                     }),
                     HTMLConverterFeature({}),
+                    BlocksFeature({
+                        blocks: [HoursBlock]
+                    })
                 ]
             }
         }),
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages,UserUploadedFormDocuments,Employment,MuseumCollections,ContinuingToImpact,StudentSpotlight,PassionsForTheProject,Support,EventCollections,EventCategories],
+        [Users, Media, Pages, UserUploadedFormDocuments, Employment, MuseumCollections, ContinuingToImpact, StudentSpotlight, PassionsForTheProject, Support, EventCollections, EventCategories],
     globals:
         [Navigation, SiteOptions, Hours, Footer, Calendar],
     typescript:
@@ -85,9 +95,9 @@ export default buildConfig({
             uploadsCollection: 'media',
             generateTitle: ({doc}) => {
                 // @ts-ignore
-                if (doc.title.value === "home"){
+                if (doc.title.value === "home") {
                     return 'Crazy Horse Memorial®'
-                }else {
+                } else {
                     // @ts-ignore
                     return `Crazy Horse Memorial® - ${doc.title.value}`
                 }

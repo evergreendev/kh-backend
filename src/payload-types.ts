@@ -469,6 +469,48 @@ export interface Page {
                             blockName?: string | null;
                             blockType: 'CalendarBlock';
                           }
+                        | {
+                            showAllCurrent?: boolean | null;
+                            showAllFuture?: boolean | null;
+                            external?: boolean | null;
+                            Relation?:
+                              | ({
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                } | null)
+                              | ({
+                                  relationTo: 'museumCollections';
+                                  value: number | MuseumCollection;
+                                } | null)
+                              | ({
+                                  relationTo: 'impact';
+                                  value: number | Impact;
+                                } | null)
+                              | ({
+                                  relationTo: 'passions';
+                                  value: number | Passion;
+                                } | null)
+                              | ({
+                                  relationTo: 'studentSpotlight';
+                                  value: number | StudentSpotlight;
+                                } | null)
+                              | ({
+                                  relationTo: 'support';
+                                  value: number | Support;
+                                } | null)
+                              | ({
+                                  relationTo: 'event';
+                                  value: number | Event;
+                                } | null)
+                              | ({
+                                  relationTo: 'eventCat';
+                                  value: number | EventCat;
+                                } | null);
+                            external_url?: string | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'HoursBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -772,6 +814,48 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'CalendarBlock';
+          }
+        | {
+            showAllCurrent?: boolean | null;
+            showAllFuture?: boolean | null;
+            external?: boolean | null;
+            Relation?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'museumCollections';
+                  value: number | MuseumCollection;
+                } | null)
+              | ({
+                  relationTo: 'impact';
+                  value: number | Impact;
+                } | null)
+              | ({
+                  relationTo: 'passions';
+                  value: number | Passion;
+                } | null)
+              | ({
+                  relationTo: 'studentSpotlight';
+                  value: number | StudentSpotlight;
+                } | null)
+              | ({
+                  relationTo: 'support';
+                  value: number | Support;
+                } | null)
+              | ({
+                  relationTo: 'event';
+                  value: number | Event;
+                } | null)
+              | ({
+                  relationTo: 'eventCat';
+                  value: number | EventCat;
+                } | null);
+            external_url?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'HoursBlock';
           }
       )[]
     | null;
@@ -4760,8 +4844,8 @@ export interface Hour {
   id: number;
   Schedules?:
     | {
-        schedule_start?: string | null;
-        schedule_end?: string | null;
+        schedule_start: string;
+        schedule_end: string;
         hours?:
           | {
               title?: string | null;

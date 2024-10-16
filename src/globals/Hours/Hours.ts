@@ -2,11 +2,16 @@ import {GlobalConfig} from "payload/types";
 import {isAdmin} from "../../access/isAdmin";
 import {ArrayRowLabel} from "../../components/ArrayRowLabel";
 import {fixDuplicationHook} from "../../hooks/fixDuplicationHook";
+import {revalidateSiteOptions} from "../hooks/revalidateSiteOptions";
+import {useField} from "payload/components/forms";
 
 export const Hours: GlobalConfig = {
     slug: "hours",
     admin: {
         hidden: ({user}) => user.role !== "admin"
+    },
+    hooks:{
+        afterChange: [revalidateSiteOptions]
     },
     access: {
         read: () => true,
@@ -16,6 +21,25 @@ export const Hours: GlobalConfig = {
         {
             name: "Schedules",
             type: "array",
+            admin: {
+                components: {
+                    RowLabel: ({ data, index, path: arrayFieldPath }) => {
+                        // arrayFieldPath example: "Navs.0"
+                        const path = `${arrayFieldPath}.schedule_start`
+                        const start  = useField({ path })
+                        const end = useField({path:`${arrayFieldPath}.schedule_end`})
+
+                        if (start.value && end.value) {
+                            const dateObj = new Date(start.value as string);
+                            const endDateObj = new Date(end.value as string);
+                            return dateObj.getMonth()+1 +"/"+ dateObj.getDate() +"/" +dateObj.getFullYear() + " - "
+                                + (endDateObj.getMonth()+1) +"/"+endDateObj.getDate()+"/"+dateObj.getFullYear();
+                        }
+
+                        return `Item ${index + 1}`;
+                    }
+                },
+            },
             hooks: {
                 beforeChange: [
                     fixDuplicationHook
@@ -28,6 +52,7 @@ export const Hours: GlobalConfig = {
                         name: "schedule_start",
                         label: "Schedule Start",
                         type: "date",
+                        required: true,
                         admin: {
                             width: '50%',
                         },
@@ -36,6 +61,7 @@ export const Hours: GlobalConfig = {
                         name: "schedule_end",
                         label: "Schedule End",
                         type: "date",
+                        required: true,
                         admin: {
                             width: '50%',
                         },
