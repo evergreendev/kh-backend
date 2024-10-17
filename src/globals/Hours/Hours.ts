@@ -69,6 +69,7 @@ export const Hours: GlobalConfig = {
                     {
                         name: "hours",
                         type: "array",
+                        localized: true,
                         admin: {
                             components: {
                                 RowLabel: ArrayRowLabel
@@ -86,6 +87,7 @@ export const Hours: GlobalConfig = {
                                         name: "hour_start",
                                         label: "Start",
                                         type: "date",
+                                        localized: true,
                                         admin: {
                                             width: '50%',
                                             date: {
@@ -99,6 +101,7 @@ export const Hours: GlobalConfig = {
                                         name: "hour_end",
                                         label: "End",
                                         type: "date",
+                                        localized: true,
                                         admin: {
                                             width: '50%',
                                             date: {
