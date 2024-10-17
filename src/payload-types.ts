@@ -472,6 +472,8 @@ export interface Page {
                         | {
                             showAllCurrent?: boolean | null;
                             showAllFuture?: boolean | null;
+                            centerText?: boolean | null;
+                            boldText?: boolean | null;
                             external?: boolean | null;
                             Relation?:
                               | ({
@@ -818,6 +820,8 @@ export interface Page {
         | {
             showAllCurrent?: boolean | null;
             showAllFuture?: boolean | null;
+            centerText?: boolean | null;
+            boldText?: boolean | null;
             external?: boolean | null;
             Relation?:
               | ({

@@ -18,6 +18,14 @@ export const HoursBlock: Block = {
             },
             type: "checkbox"
         },
+        {
+            name: "centerText",
+            type: "checkbox"
+        },
+        {
+            name: "boldText",
+            type: "checkbox"
+        },
         ...navItemFields.filter(x => {
             return (x as any).name !== "title"
         })
