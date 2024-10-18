@@ -24,6 +24,7 @@ import ImageCard from "../../blocks/ImageCard";
 import {fixDuplicationCollectionHook} from "../../hooks/fixDuplicationCollectionHook";
 import CalendarBlock from "../../blocks/CalendarBlock";
 import HoursBlock from "../../blocks/HoursBlock";
+import AdmissionBlock from "../../blocks/AdmissionBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -222,7 +223,7 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([ImageCard, GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock,HoursBlock]),ImageCard, GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock,HoursBlock]
+            blocks: [Column([ImageCard, GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock,HoursBlock,AdmissionBlock]),ImageCard, GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock,HoursBlock, AdmissionBlock]
         },
         ...standardFields
     ]

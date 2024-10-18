@@ -37,6 +37,8 @@ import {fixDuplicationCollectionHook} from "./hooks/fixDuplicationCollectionHook
 import {Calendar} from "./globals/Calendar/Calendar";
 import {EventCategories} from "./collections/Events/EventCategories";
 import HoursBlock from "./blocks/HoursBlock";
+import {Admission} from "./globals/Admission/Admission";
+import AdmissionBlock from "./blocks/AdmissionBlock";
 
 // @ts-ignore
 export default buildConfig({
@@ -67,7 +69,7 @@ export default buildConfig({
                     }),
                     HTMLConverterFeature({}),
                     BlocksFeature({
-                        blocks: [HoursBlock]
+                        blocks: [HoursBlock,AdmissionBlock]
                     })
                 ]
             }
@@ -77,7 +79,7 @@ export default buildConfig({
     collections:
         [Users, Media, Pages, UserUploadedFormDocuments, Employment, MuseumCollections, ContinuingToImpact, StudentSpotlight, PassionsForTheProject, Support, EventCollections, EventCategories],
     globals:
-        [Navigation, SiteOptions, Hours, Footer, Calendar],
+        [Navigation, SiteOptions, Hours, Footer, Calendar, Admission],
     typescript:
         {
             outputFile: path.resolve(__dirname, 'payload-types.ts'),
