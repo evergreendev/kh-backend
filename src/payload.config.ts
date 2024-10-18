@@ -39,6 +39,7 @@ import {EventCategories} from "./collections/Events/EventCategories";
 import HoursBlock from "./blocks/HoursBlock";
 import {Admission} from "./globals/Admission/Admission";
 import AdmissionBlock from "./blocks/AdmissionBlock";
+import redirects from "@payloadcms/plugin-redirects";
 
 // @ts-ignore
 export default buildConfig({
@@ -90,6 +91,9 @@ export default buildConfig({
     }
     ,
     plugins: [
+        redirects({
+            collections: [...collectionSlugs]
+        }),
         seoPlugin({
             collections: [
                 ...collectionSlugs

@@ -21,6 +21,7 @@
     "@payloadcms/db-postgres": "^0.8.7",
     "@payloadcms/plugin-cloud": "^3.0.0",
     "@payloadcms/plugin-form-builder": "^1.2.2",
+    "@payloadcms/plugin-redirects": "^1.0.2",
     "@payloadcms/plugin-search": "^1.1.1",
     "@payloadcms/plugin-seo": "^2.3.2",
     "@payloadcms/richtext-lexical": "^0.11.3",
