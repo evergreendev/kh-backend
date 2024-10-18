@@ -92,7 +92,7 @@ export default buildConfig({
     plugins: [
         seoPlugin({
             collections: [
-                'pages'
+                ...collectionSlugs
             ],
             uploadsCollection: 'media',
             generateTitle: ({doc}) => {
