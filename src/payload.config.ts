@@ -40,6 +40,7 @@ import HoursBlock from "./blocks/HoursBlock";
 import {Admission} from "./globals/Admission/Admission";
 import AdmissionBlock from "./blocks/AdmissionBlock";
 import redirects from "@payloadcms/plugin-redirects";
+import sendEmail from './hooks/sendEmail';
 
 // @ts-ignore
 export default buildConfig({
@@ -121,6 +122,20 @@ export default buildConfig({
                     beforeChange: [fixDuplicationCollectionHook],
                     afterChange: [revalidateForm]
                 },
+                fields:[
+                    {
+                        name: "showFieldTable",
+                        type: "checkbox",
+                        defaultValue: true
+                    }
+                ]
+            },
+            formSubmissionOverrides:{
+                hooks: {
+                    beforeChange: [
+                        (data) => sendEmail(data),
+                    ]
+                }
             }
         }),
         search({

@@ -5,7 +5,7 @@ export const UserUploadedFormDocuments: CollectionConfig = {
     slug: "userUploadedFormDocuments",
     access: {
         read: isAdmin(),
-        update: () => true
+        create: () => true
     },
     admin: {
         hidden: ({user})=> user.role !== "admin"

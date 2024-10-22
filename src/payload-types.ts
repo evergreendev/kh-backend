@@ -20,6 +20,7 @@ export interface Config {
     support: Support;
     event: Event;
     eventCat: EventCat;
+    redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
@@ -4491,6 +4492,7 @@ export interface Form {
         id?: string | null;
       }[]
     | null;
+  showFieldTable?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -4573,6 +4575,53 @@ export interface Employment {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  from: string;
+  to?: {
+    type?: ('reference' | 'custom') | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'museumCollections';
+          value: number | MuseumCollection;
+        } | null)
+      | ({
+          relationTo: 'impact';
+          value: number | Impact;
+        } | null)
+      | ({
+          relationTo: 'passions';
+          value: number | Passion;
+        } | null)
+      | ({
+          relationTo: 'studentSpotlight';
+          value: number | StudentSpotlight;
+        } | null)
+      | ({
+          relationTo: 'support';
+          value: number | Support;
+        } | null)
+      | ({
+          relationTo: 'event';
+          value: number | Event;
+        } | null)
+      | ({
+          relationTo: 'eventCat';
+          value: number | EventCat;
+        } | null);
+    url?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
