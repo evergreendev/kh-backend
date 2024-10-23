@@ -28,8 +28,16 @@ const sendEmail = async (beforeChangeData: any): Promise<any> => {
 
             if (showFieldTable){
                 submissionData.forEach((field: any) => {
-                    fieldTable += "<div>";
-                    fieldTable += `<span style='font-weight: bold'>${field.field}:</span>`;
+                    console.log(form)
+
+                    const formField = form.fields.find(x => {
+                        return x.name === field.field
+                    })
+
+                    const label = formField?.label || field.field
+
+                        fieldTable += "<div>";
+                    fieldTable += `<span style='font-weight: bold'>${label}:</span>`;
                     fieldTable += ` <span>${field.value}</span>`;
                     fieldTable += "</div>";
                 })
@@ -77,7 +85,7 @@ const sendEmail = async (beforeChangeData: any): Promise<any> => {
                             bcc,
                             cc,
                             from,
-                            html: `<div>${serializedMessage}${showFieldTable ? fieldTable : ""}</div>`,
+                            html: `<div>${serializedMessage||""}${showFieldTable ? fieldTable : ""}</div>`,
                             replyTo,
                             subject: replaceDoubleCurlys(subject, submissionData),
                             to,
