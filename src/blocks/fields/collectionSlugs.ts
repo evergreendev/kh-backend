@@ -6,7 +6,8 @@ export const collectionSlugs = [
     "studentSpotlight",
     "support",
     "event",
-    "eventCat"
+    "eventCat",
+    "news"
 ]
 
 export const collectionSlugsOptions = [
@@ -33,5 +34,9 @@ export const collectionSlugsOptions = [
     {
         label: "Event",
         value: "event"
+    },
+    {
+        label: "News",
+        value: "news"
     }
 ]

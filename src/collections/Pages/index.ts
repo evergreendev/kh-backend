@@ -25,6 +25,7 @@ import {fixDuplicationCollectionHook} from "../../hooks/fixDuplicationCollection
 import CalendarBlock from "../../blocks/CalendarBlock";
 import HoursBlock from "../../blocks/HoursBlock";
 import AdmissionBlock from "../../blocks/AdmissionBlock";
+import CollectionList from "../../blocks/CollectionList";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -32,7 +33,7 @@ export const Pages: CollectionConfig = {
         useAsTitle: "title",
         hidden: ({user}) => user.role !== "admin",
         livePreview: {
-            url: ({data}) => `${process.env.PAYLOAD_PUBLIC_NEXT_URL}${data.slug !== 'home' ? `/${data.slug}`:""}?draft=true&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`,
+            url: ({data}) => `${process.env.PAYLOAD_PUBLIC_NEXT_URL}${data.slug !== 'home' ? `/${data.slug}` : ""}?draft=true&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`,
         },
     },
     hooks: {
@@ -51,10 +52,10 @@ export const Pages: CollectionConfig = {
     },
     fields: [
         {
-          name: "intro_content",
-          label: "Intro Content",
+            name: "intro_content",
+            label: "Intro Content",
             type: "group",
-            admin:{disableListColumn:true},
+            admin: {disableListColumn: true},
             fields: [
                 {
                     name: "video",
@@ -142,7 +143,7 @@ export const Pages: CollectionConfig = {
             type: "relationship",
             relationTo: "pages",
             filterOptions: ({id}) => {
-                if(!id){
+                if (!id) {
                     return {};
                 }
 
@@ -174,8 +175,8 @@ export const Pages: CollectionConfig = {
             },
             hooks: {
                 afterRead: [
-                    async ({ data, req }) => {
-                        const { parent_page } = data
+                    async ({data, req}) => {
+                        const {parent_page} = data
 
                         if (!parent_page) return data.slug
 
@@ -223,7 +224,42 @@ export const Pages: CollectionConfig = {
                 singular: "row",
                 plural: "rows",
             },
-            blocks: [Column([ImageCard, GalleryBlock,MediaBlock, TextBlock,MenuButtonBlock, HeaderBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock,HoursBlock,AdmissionBlock]),ImageCard, GalleryBlock,BreakerBlock,MediaBlock,MenuButtonBlock,CompareSliderBlock,FormBlock,EmploymentBlock,collectionCardBlock,singleCollectionBlock,SpacerBlock,PictureTimeline,CalendarBlock,HoursBlock, AdmissionBlock]
+            blocks: [Column([
+                ImageCard,
+                GalleryBlock,
+                MediaBlock,
+                TextBlock,
+                MenuButtonBlock,
+                HeaderBlock,
+                CompareSliderBlock,
+                FormBlock,
+                EmploymentBlock,
+                collectionCardBlock,
+                singleCollectionBlock,
+                SpacerBlock,
+                PictureTimeline,
+                CalendarBlock,
+                HoursBlock,
+                AdmissionBlock,
+                CollectionList
+            ]),
+                ImageCard,
+                GalleryBlock,
+                BreakerBlock,
+                MediaBlock,
+                MenuButtonBlock,
+                CompareSliderBlock,
+                FormBlock,
+                EmploymentBlock,
+                collectionCardBlock,
+                singleCollectionBlock,
+                SpacerBlock,
+                PictureTimeline,
+                CalendarBlock,
+                HoursBlock,
+                AdmissionBlock,
+                CollectionList
+            ]
         },
         ...standardFields
     ]
