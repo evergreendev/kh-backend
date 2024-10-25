@@ -73,6 +73,14 @@ export const Pages: CollectionConfig = {
                     }
                 },
                 {
+                    name: "mobileVideoFile",
+                    type: "upload",
+                    relationTo: "media",
+                    admin: {
+                        description: "Video that will show on smaller devices"
+                    }
+                },
+                {
                     name: "thumbnail",
                     type: "upload",
                     relationTo: "media",
