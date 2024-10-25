@@ -42,6 +42,7 @@ import AdmissionBlock from "./blocks/AdmissionBlock";
 import redirects from "@payloadcms/plugin-redirects";
 import sendEmail from './hooks/sendEmail';
 import { News } from './collections/News';
+import {Banner} from "./globals/Banner";
 
 // @ts-ignore
 export default buildConfig({
@@ -82,7 +83,7 @@ export default buildConfig({
     collections:
         [Users, Media, Pages, UserUploadedFormDocuments, Employment, MuseumCollections, ContinuingToImpact, StudentSpotlight, PassionsForTheProject, Support, EventCollections, EventCategories,News],
     globals:
-        [Navigation, SiteOptions, Hours, Footer, Calendar, Admission],
+        [Navigation, SiteOptions, Hours, Footer, Calendar, Admission, Banner],
     typescript:
         {
             outputFile: path.resolve(__dirname, 'payload-types.ts'),
