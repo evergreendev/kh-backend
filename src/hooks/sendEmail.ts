@@ -67,7 +67,7 @@ const sendEmail = async (beforeChangeData: any): Promise<any> => {
                             const curr = submissionData[i].value;
                             const fileNameArr = curr.split('pload:-')
 
-                            if (fileNameArr.length > 1) {
+                            if (fileNameArr.length > 1 && fileNameArr[1] !== "") {
                                 attachments.push({
                                     filename: fileNameArr[1],
                                     path: process.env.NODE_ENV === "production" ? "./dist/" + "user-uploaded-documents/" + fileNameArr[1] : "./src/" + "user-uploaded-documents/" + fileNameArr[1],
