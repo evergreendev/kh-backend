@@ -26,6 +26,7 @@ import CalendarBlock from "../../blocks/CalendarBlock";
 import HoursBlock from "../../blocks/HoursBlock";
 import AdmissionBlock from "../../blocks/AdmissionBlock";
 import CollectionList from "../../blocks/CollectionList";
+import WebcamBlock from "../../blocks/WebcamBlock";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -249,7 +250,8 @@ export const Pages: CollectionConfig = {
                 CalendarBlock,
                 HoursBlock,
                 AdmissionBlock,
-                CollectionList
+                CollectionList,
+                WebcamBlock
             ]),
                 ImageCard,
                 GalleryBlock,
@@ -266,7 +268,8 @@ export const Pages: CollectionConfig = {
                 CalendarBlock,
                 HoursBlock,
                 AdmissionBlock,
-                CollectionList
+                CollectionList,
+                WebcamBlock
             ]
         },
         ...standardFields

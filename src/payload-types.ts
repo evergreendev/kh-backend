@@ -599,6 +599,11 @@ export interface Page {
                             blockName?: string | null;
                             blockType: 'collectionList';
                           }
+                        | {
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'WebcamBlock';
+                          }
                       )[]
                     | null;
                   width?: ('1/3' | '2/3' | '1/2' | '1/4' | '3/4' | '1/1') | null;
@@ -1027,6 +1032,11 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'collectionList';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'WebcamBlock';
           }
       )[]
     | null;
