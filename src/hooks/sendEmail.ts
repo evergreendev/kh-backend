@@ -1,5 +1,5 @@
 import {replaceDoubleCurlys} from "@payloadcms/plugin-form-builder/dist/utilities/replaceDoubleCurlys";
-import {Email, FormattedEmail, PluginConfig} from "@payloadcms/plugin-form-builder/types";
+import {Email} from "@payloadcms/plugin-form-builder/types";
 import {serializeLexical} from "@payloadcms/plugin-form-builder/dist/utilities/lexical/serializeLexical";
 import {serializeSlate} from "@payloadcms/plugin-form-builder/dist/utilities/slate/serializeSlate";
 
@@ -94,16 +94,13 @@ const sendEmail = async (beforeChangeData: any): Promise<any> => {
                     }),
                 )
 
-                let emailsToSend = formattedEmails
-
                 // const log = emailsToSend.map(({ html, ...rest }) => ({ ...rest }))
 
                 await Promise.all(
-                    emailsToSend.map(async (email) => {
+                    formattedEmails.map(async (email) => {
                         const {to} = email
                         try {
-                            const emailPromise = await payload.sendEmail(email)
-                            return emailPromise
+                            return await payload.sendEmail(email)
                         } catch (err: unknown) {
                             payload.logger.error({
                                 err: `Error while sending email to address: ${to}. Email not sent: ${JSON.stringify(
