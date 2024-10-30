@@ -7,7 +7,8 @@ export const collectionSlugs = [
     "support",
     "event",
     "eventCat",
-    "news"
+    "news",
+    "media"
 ]
 
 export const collectionSlugsOptions = [
