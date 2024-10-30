@@ -43,6 +43,7 @@ import redirects from "@payloadcms/plugin-redirects";
 import sendEmail from './hooks/sendEmail';
 import { News } from './collections/News';
 import {Banner} from "./globals/Banner";
+import IFrame from "./blocks/IFrame";
 
 // @ts-ignore
 export default buildConfig({
@@ -73,7 +74,7 @@ export default buildConfig({
                     }),
                     HTMLConverterFeature({}),
                     BlocksFeature({
-                        blocks: [HoursBlock,AdmissionBlock]
+                        blocks: [HoursBlock,AdmissionBlock,IFrame]
                     })
                 ]
             }
