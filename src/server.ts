@@ -34,7 +34,7 @@ const start = async () => {
     ...(process.env.AWS_SECRET_ACCESS_KEY
       ? {
         email: {
-          fromName: "Crazy Horse Memorial",
+          fromName: "Korczak's Heritage, Inc.",
           fromAddress: "noreply@crazyhorsememorial.org",
           transport: transporter
         },
