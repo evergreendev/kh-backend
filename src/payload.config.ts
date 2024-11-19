@@ -26,22 +26,12 @@ import {revalidateForm} from "./collections/Forms/hooks/revalidateForm";
 import FileUploadBlock from "./blocks/FileUploadBlock";
 import {UserUploadedFormDocuments} from "./collections/UserUploadedFormDocuments";
 import {Employment} from "./collections/Employment";
-import {MuseumCollections} from "./collections/MuseumCollections";
-import {ContinuingToImpact} from "./collections/ContinuingToImpact";
-import {StudentSpotlight} from "./collections/StudentSpotlight";
-import {PassionsForTheProject} from "./collections/PassionsForTheProject";
 import {collectionSlugs} from "./blocks/fields/collectionSlugs";
-import {Support} from "./collections/Support";
-import {EventCollections} from "./collections/Events";
 import {fixDuplicationCollectionHook} from "./hooks/fixDuplicationCollectionHook";
-import {Calendar} from "./globals/Calendar/Calendar";
-import {EventCategories} from "./collections/Events/EventCategories";
 import HoursBlock from "./blocks/HoursBlock";
-import {Admission} from "./globals/Admission/Admission";
 import AdmissionBlock from "./blocks/AdmissionBlock";
 import redirects from "@payloadcms/plugin-redirects";
 import sendEmail from './hooks/sendEmail';
-import { News } from './collections/News';
 import {Banner} from "./globals/Banner";
 import IFrame from "./blocks/IFrame";
 
@@ -82,9 +72,9 @@ export default buildConfig({
     serverURL:
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections:
-        [Users, Media, Pages, UserUploadedFormDocuments, Employment, MuseumCollections, ContinuingToImpact, StudentSpotlight, PassionsForTheProject, Support, EventCollections, EventCategories,News],
+        [Users, Media, Pages, UserUploadedFormDocuments, Employment],
     globals:
-        [Navigation, SiteOptions, Hours, Footer, Calendar, Admission, Banner],
+        [Navigation, SiteOptions, Hours, Footer, Banner],
     typescript:
         {
             outputFile: path.resolve(__dirname, 'payload-types.ts'),
