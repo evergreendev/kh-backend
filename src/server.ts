@@ -1,19 +1,6 @@
 import express from 'express'
 import payload from 'payload'
 let nodemailer = require("nodemailer");
-let aws = require("@aws-sdk/client-ses");
-let { defaultProvider } = require("@aws-sdk/credential-provider-node");
-
-const ses = new aws.SES({
-  apiVersion: "2010-12-01",
-  region: "us-east-2",
-  defaultProvider,
-})
-
-// create Nodemailer SES transporter
-let transporter = nodemailer.createTransport({
-  SES: { ses, aws },
-});
 
 require('dotenv').config()
 const app = express()
@@ -22,6 +9,15 @@ const app = express()
 app.get('/', (_, res) => {
   res.redirect('/admin')
 })
+
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: Number(process.env.EMAIL_PORT)||587,
+  auth: {
+    user: process.env.EMAIL_USERNAME,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
 const start = async () => {
   // Initialize Payload
@@ -35,7 +31,7 @@ const start = async () => {
       ? {
         email: {
           fromName: "Korczak's Heritage, Inc.",
-          fromAddress: "noreply@crazyhorsememorial.org",
+          fromAddress: "noreply@korczaksheritage.khonline.biz",
           transport: transporter
         },
       }
